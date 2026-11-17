@@ -26,7 +26,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 </script>"""
 ANIMS={}
 # 1. steps: each line goes bold in turn
-ANIMS["steps"]=dict(music="marimba",crop=285,dur=9.0,events=[(1.0+i*1.15,n) for i,n in enumerate([0,1,2,3,4])]+[(7.4,5)],html=BASE+"""
+ANIMS["steps"]=dict(audio_fn=lambda d,p:_snd_steps(d,p),music="marimba",crop=285,dur=9.0,events=[(1.0+i*1.15,n) for i,n in enumerate([0,1,2,3,4])]+[(7.4,5)],html=BASE+"""
 <div class="p blur"><div class="mark">kato.</div>
 <div class="c" id="list" style="top:620px;font-size:64px;white-space:nowrap;display:flex;flex-direction:column;gap:70px"></div>
 <div class="c" id="end" style="top:820px;font-size:112px;line-height:1.02;opacity:0">We take care<br>of the <em>billing.</em></div></div>
@@ -43,7 +43,7 @@ window.render=t=>{
   const e=ease(seg(t,7.3,.7)); $('#end').style.opacity=e; $('#end').style.transform=`translateY(${(1-e)*30}px)`;
 };</script>""")
 # 2. golf
-ANIMS["golf"]=dict(music="bell",crop=285,dur=7.5,events=[(3.15,2),(3.9,3),(5.0,4)],html=BASE+"""
+ANIMS["golf"]=dict(audio_fn=lambda d,p:_snd_golf(d,p),music="bell",crop=285,dur=7.5,events=[(3.15,2),(3.9,3),(5.0,4)],html=BASE+"""
 <div class="p bone"><div class="mark">kato.</div>
 <svg class="c" style="top:560px" viewBox="0 0 888 420"><ellipse cx="660" cy="352" rx="170" ry="18" fill="#e4dfd3"/>
 <path d="M0 352 H888" stroke="#111" stroke-opacity=".3" stroke-width="2"/><ellipse cx="660" cy="352" rx="32" ry="7" fill="#111"/>
@@ -60,7 +60,7 @@ ANIMS["golf"]=dict(music="bell",crop=285,dur=7.5,events=[(3.15,2),(3.9,3),(5.0,4
  const e2=ease(seg(t,4.9,.8)); $('#s').style.opacity=e2;
 };</script>""")
 # 3. time back
-ANIMS["timeback"]=dict(music="calm",crop=285,dur=7.0,events=[(0.6,0),(1.3,1),(2.0,2),(2.9,4),(4.6,5)],html=BASE+"""
+ANIMS["timeback"]=dict(audio_fn=lambda d,p:_snd_timeback(d,p),music="calm",crop=285,dur=7.0,events=[(0.6,0),(1.3,1),(2.0,2),(2.9,4),(4.6,5)],html=BASE+"""
 <div class="p wash"><div class="mark">kato.</div>
 <div class="c" id="w" style="top:560px;font-size:190px;line-height:1;letter-spacing:-.045em;display:flex;flex-direction:column;gap:34px"></div>
 <div class="c" id="s" style="top:1500px;font-size:62px;color:#626262;opacity:0">We take care of the billing.</div></div>
@@ -69,7 +69,7 @@ $('#w').innerHTML=Wd.map((w,i)=>`<span style="margin-left:${i*130}px;display:blo
 window.render=t=>{$$('#w span').forEach((s,i)=>{const e=ease(seg(t,T[i],.7)); s.style.opacity=e; s.style.transform=`translateY(${(1-e)*46}px)`;});
  const e=ease(seg(t,4.5,.8)); $('#s').style.opacity=e;};</script>""")
 # 4. card reconcile
-ANIMS["reconcile"]=dict(music="keys",crop=320,dur=8.5,events=[(1.4,0),(2.9,1),(4.4,2),(5.9,5)],html=BASE+"""
+ANIMS["reconcile"]=dict(audio_fn=lambda d,p:_snd_reconcile(d,p),music="keys",crop=320,dur=8.5,events=[(1.4,0),(2.9,1),(4.4,2),(5.9,5)],html=BASE+"""
 <style>.card{background:#fff;border-radius:36px;padding:56px 56px 30px;border:1px solid #dedede;box-shadow:0 40px 90px -50px rgba(17,17,17,.35);font-family:Inter,sans-serif;letter-spacing:0}
 .hd{display:flex;justify-content:space-between;align-items:baseline;font-size:34px;font-weight:600;padding-bottom:32px;border-bottom:1px solid #dedede}
 .bt{background:#f3efe6;border-radius:20px;padding:36px 38px;margin:36px 0 10px;display:flex;justify-content:space-between;align-items:center}
@@ -140,6 +140,85 @@ window.render=t=>{ if(!G) G=geo(); const g=G;
   $('#t2').style.opacity=ease(seg(t,5.7,0.9));
 };}</script>""")
 
+
+# ---------- bespoke sound design (one function per video; all synthesized here, nothing licensed) ----------
+SR=44100
+def _ks(f,d,damp=.996,seed=1):
+    """Plucked string (Karplus-Strong)."""
+    rng=np.random.default_rng(seed); N=max(2,int(SR/f)); buf=rng.uniform(-1,1,N); n=int(d*SR); out=np.zeros(n+N)
+    for p in range(0,n,N):
+        out[p:p+N]=buf; buf=damp*0.5*(buf+np.roll(buf,1))
+    return out[:n]*np.minimum(1,np.arange(n)/SR/.003)
+def _add(y,sig,at,g=1.0):
+    k=int(at*SR)
+    if k<0: sig=sig[-k:]; k=0
+    m=min(len(sig),len(y)-k)
+    if m>0: y[k:k+m]+=g*sig[:m]
+def _lp(n,width,seed=3):
+    x=np.random.default_rng(seed).standard_normal(n); k=np.ones(width)/width
+    return np.convolve(np.convolve(x,k,mode="same"),k,mode="same")
+def _tn(f,d,dec,att=.005,h2=0.0,drop=0.0):
+    tt=np.arange(int(d*SR))/SR; fr=f+drop*np.exp(-tt*30)
+    ph=2*np.pi*np.cumsum(fr)/SR
+    return (np.sin(ph)+h2*np.sin(2*ph))*np.exp(-tt*dec)*np.minimum(1,tt/att)
+def _pad(freqs,d,att=.6,dec=.5):
+    tt=np.arange(int(d*SR))/SR
+    return sum((np.sin(2*np.pi*f*tt)+np.sin(2*np.pi*f*1.004*tt))*(.5/(i+1)**.6) for i,f in enumerate(freqs))*(1-np.exp(-tt/att*2.5))*np.exp(-tt*dec)
+def _finish(y,dur,path,room=((.09,.28),(.21,.2),(.34,.13))):
+    for d,g in room:
+        dd=int(d*SR); y[dd:]+=g*y[:-dd]
+    t=np.arange(len(y))/SR; y*=np.clip((dur-t)/1.0,0,1)*np.clip(t/.05,0,1); y=y/max(1e-9,np.abs(y).max())*0.75
+    with wave.open(path,'wb') as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((y*32767).astype('<i2').tobytes())
+def _snd_steps(dur,path):
+    """A clock ticking under a low drone; the ticking slows and stops, and a warm strummed chord takes over."""
+    y=np.zeros(int(dur*SR)); _add(y,_pad([55,110,164.81],7.6,att=1.2,dec=.05),0,.5)
+    times=[0.425+0.575*i for i in range(10)]+[6.3,7.0]
+    for i,at in enumerate(times):
+        f=2300 if i%2==0 else 1650
+        tick=_tn(f,.05,160,att=.0005)+0.6*_lp(int(.05*SR),6,seed=i)*np.exp(-np.arange(int(.05*SR))/SR*220)*8
+        _add(y,tick,at,.3 if i<10 else .22)
+    for j,f in enumerate([110,164.81,220,277.18,329.63,440]): _add(y,_ks(f,2.6,.997,seed=j),7.3+.045*j,.75)
+    _add(y,_pad([110,220,277.18],1.9,att=.4,dec=.6),7.3,.25); _finish(y,dur,path)
+def _snd_golf(dur,path):
+    """A putt, the ball rolling across grass, the drop into the cup, a breeze, then an acoustic guitar strum."""
+    n=int(dur*SR); y=np.zeros(n); t=np.arange(n)/SR
+    _add(y,_tn(950,.06,110,att=.0005),0.5,.8); _add(y,_tn(240,.08,60),0.5,.8)
+    u=np.clip((t-.5)/2.55,0,1); y+=7.5*_lp(n,300,seed=5)*((1-u)**.6)*(t>.5)*(t<3.05)*(.75+.25*np.sin(2*np.pi*9*t*(1-.5*u)))
+    hi=np.random.default_rng(9).standard_normal(n); hi=hi-np.convolve(hi,np.ones(40)/40,mode="same")
+    y+=0.02*hi*(0.6+0.4*np.sin(2*np.pi*.23*t))
+    for at,g in [(3.10,.9),(3.19,.5),(3.255,.3)]: _add(y,_tn(230,.12,38,att=.001,drop=120),at,g)
+    for j,f in enumerate([98,123.47,146.83,196,246.94,293.66]): _add(y,_ks(f,3.2,.9975,seed=20+j),3.85+.035*j,.5)
+    for j,f in enumerate([293.66,392,493.88]): _add(y,_ks(f,2.2,.997,seed=30+j),4.95+.16*j,.32)
+    _finish(y,dur,path)
+def _snd_timeback(dur,path):
+    """Time running backwards: one reversed chord swells into the last word, then lands forwards and rings out."""
+    y=np.zeros(int(dur*SR)); ch=np.zeros(int(2.7*SR))
+    for j,f in enumerate([130.81,196,261.63,329.63,392,523.25]): _add(ch,_ks(f,2.6,.9975,seed=40+j),.03*j,.5)
+    _add(y,ch[::-1].copy(),2.9-2.7,.8)
+    for j,f in enumerate([130.81,196,261.63,329.63,392,523.25]): _add(y,_ks(f,3.6,.998,seed=50+j),2.9+.02*j,.55)
+    _add(y,_pad([65.41,130.81,196],3.6,att=.5,dec=.45),2.9,.3)
+    for j,f in enumerate([659.25,783.99]): _add(y,_ks(f,1.8,.996,seed=60+j),4.55+.22*j,.22)
+    _finish(y,dur,path,room=((.12,.3),(.27,.22),(.45,.15)))
+def _snd_reconcile(dur,path):
+    """A soft steady pulse, a dry wooden knock as each record checks out, and one clear bell when the batch reconciles."""
+    y=np.zeros(int(dur*SR))
+    k=0.4
+    while k<5.8: _add(y,_tn(73.42,.5,7,att=.01),k,.45); k+=.75
+    for at in (1.4,2.9,4.4): _add(y,_tn(880,.08,75,att=.0005),at,.6); _add(y,_tn(1320,.06,95,att=.0005),at,.3)
+    for f,g in [(1318.51,.5),(1975.53,.3),(2637.02,.15)]: _add(y,_tn(f,2.4,2.6,att=.002),5.9,g)
+    _add(y,_pad([146.83,220,369.99],2.6,att=.35,dec=.55),5.9,.35); _finish(y,dur,path)
+def _snd_better(dur,path):
+    """Slow, warm electric-piano chords that follow their own pace instead of the words."""
+    y=np.zeros(int(dur*SR))
+    prog=[(0.3,[87.31,130.81,220,261.63]),(2.0,[73.42,130.81,174.61,220]),(3.7,[58.27,146.83,174.61,233.08]),(5.2,[87.31,130.81,220,349.23])]
+    for at,notes in prog:
+        for j,f in enumerate(notes):
+            tt=np.arange(int(2.6*SR))/SR
+            _add(y,(np.sin(2*np.pi*f*tt)+.35*np.sin(4*np.pi*f*tt)*np.exp(-tt*2.5))*(1+.08*np.sin(2*np.pi*4.5*tt))*np.exp(-tt*.95)*np.minimum(1,tt/.03),at+.02*j,.4)
+    _add(y,_pad([174.61,261.63,349.23],dur-.5,att=2.0,dec=.12),0.2,.12)
+    _finish(y,dur,path,room=((.13,.3),(.29,.22),(.47,.14)))
+
 PROFILES={
  "calm":   dict(scale=[261.63,293.66,329.63,392.0,440.0,523.25], pad=[130.81,196.0,261.63,329.63], timbre="sine",   echo=.28),
  "marimba":dict(scale=[220.0,261.63,293.66,329.63,392.0,440.0],  pad=[110.0,164.81,220.0],          timbre="marimba",echo=.19),
@@ -186,7 +265,9 @@ window.render=t=>{{const bl=document.querySelector('.blur'); if(bl){{bl.style.se
     return dict(dur=ts+2.6,events=ev,html=h,music=music)
 # extra text videos can be declared in anims.json: {"name": {"words":[...],"theme":"wash","sub":"","step":130,"size":190,"music":"calm"}}
 if pathlib.Path(__file__).with_name("anims.json").exists():
-    for k,v in json.loads(pathlib.Path(__file__).with_name("anims.json").read_text()).items(): ANIMS[k]=stagger_anim(**v)
+    for k,v in json.loads(pathlib.Path(__file__).with_name("anims.json").read_text()).items():
+        fn=v.pop("sound",None); ANIMS[k]=stagger_anim(**v)
+        if fn: ANIMS[k]["audio_fn"]=globals()[fn]
 async def run(names,out):
     out=pathlib.Path(out); out.mkdir(exist_ok=True,parents=True)
     async with async_playwright() as p:

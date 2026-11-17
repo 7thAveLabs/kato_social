@@ -23,7 +23,7 @@ Do not repeat a headline used in the previous 4 weeks (check `posts/` and `queue
 ## Videos
 - New text videos: add an entry to `anims.json` (word-by-word headline, 3 to 5 short lines) and render with `python3 anim.py <name> <outdir>`.
 - The built-in videos (`steps`, `golf`, `timeback`, `reconcile`) may be reused, but not within 4 weeks of their last use.
-- Vary the music: use a different `music` profile (calm, marimba, bell, keys, swell) from the previous video. Audio is synthesized by `anim.py`; never add third-party music.
+- Sound: every video gets its own sound, designed around what happens in it (see the `_snd_*` functions in `anim.py`). No chime-per-step patterns and no sound that rises with each movement. For a new text video, write a new `_snd_*` function and name it in the `sound` field in `anims.json`; do not reuse another video's sound within 4 weeks. Audio is synthesized by `anim.py`; never add third-party music.
 - Every video entry needs a cover and a 4:5 fallback still (both written by `anim.py`).
 
 ## What Instagram rewards (reviewed Nov 2026)
