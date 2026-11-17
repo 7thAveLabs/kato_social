@@ -70,7 +70,7 @@ def slide(s,i,n):
     if s.get("num"): b+=f'<div class="num">{html.escape(s["num"])}</div>'
     if s.get("stagger"):
         k=len(s["stagger"]); step=s.get("step",110)
-        b+='<div class="stag">'+"".join(f'<span style="margin-left:{j*step}px">{em(w)}</span>' for j,w in enumerate(s["stagger"]))+'</div>'
+        b+=f'<div class="stag" style="font-size:{s.get("fs",124)}px">'+"".join(f'<span style="margin-left:{j*step}px">{em(w)}</span>' for j,w in enumerate(s["stagger"]))+'</div>'
     if s.get("headline"): b+=f'<h1 class="{s.get("size","")}">{em(s["headline"])}</h1>'
     if s.get("sub"): b+=f'<div class="sub">{em(s["sub"])}</div>'
     if s.get("bars"): b+='<div class="bars">'+"".join(f'<div><b>{html.escape(a)}</b><span>{html.escape(c)}</span></div>' for a,c in s["bars"])+'</div>'

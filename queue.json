@@ -2,11 +2,12 @@
  {
   "date": "2026-11-17",
   "id": "2026-11-17_time_back",
-  "pillar": "Benefit line",
-  "type": "image",
-  "images": [
-   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-17_time_back.jpg"
-  ],
+  "pillar": "Video",
+  "type": "video",
+  "animation": "timeback",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_time_back.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_time_back_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-17_time_back_fallback.jpg",
   "caption": "Billing was never why you became a dentist.\n\nKato handles payment posting and reconciliation, so those hours go back to your patients and your life.\n\n#dentalpractice #dentalbilling #practiceowner",
   "status": "queued",
   "media_id": null,
@@ -30,39 +31,40 @@
  },
  {
   "date": "2026-11-19",
-  "id": "2026-11-19_handled",
-  "pillar": "Product outcome teaser",
+  "id": "2026-11-19_why_dentist",
+  "pillar": "Benefit line",
   "type": "image",
   "images": [
-   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-19_handled.jpg"
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-19_why_dentist.jpg"
   ],
-  "caption": "Received, verified, posted, reconciled.\n\nFour steps your team no longer has to chase.\n\n#dentalbilling #paymentposting #dentalpractice",
+  "caption": "Nobody opens a practice to match deposits to EOBs.\n\nKato handles payment posting and reconciliation, so that time goes back to patients.\n\n#dentist #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
   "posted_at": null
  },
  {
   "date": "2026-11-20",
-  "id": "2026-11-20_better_things",
-  "pillar": "Benefit line",
-  "type": "image",
-  "images": [
-   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-20_better_things.jpg"
-  ],
-  "caption": "Patients. Family. An evening that ends on time.\n\nWe take care of the billing.\n\n#dentist #practiceowner #dentalbilling",
+  "id": "2026-11-20_swing",
+  "pillar": "Video",
+  "type": "video",
+  "animation": "golf",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-20_swing.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-20_swing_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-20_swing_fallback.jpg",
+  "caption": "Friday afternoon should not be spent matching deposits to EOBs.\n\nWork on your swing. We'll handle the billing.\n\n#dentist #golf #dentalbilling",
   "status": "queued",
   "media_id": null,
   "posted_at": null
  },
  {
   "date": "2026-11-21",
-  "id": "2026-11-21_swing",
-  "pillar": "Campaign (golf)",
+  "id": "2026-11-21_stay_informed",
+  "pillar": "Benefit line",
   "type": "image",
   "images": [
-   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-21_swing.jpg"
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-21_stay_informed.jpg"
   ],
-  "caption": "Friday afternoon should not be spent matching deposits to EOBs.\n\nWork on your swing. We'll handle the billing.\n\n#dentist #golf #dentalbilling",
+  "caption": "See the result without chasing the update.\n\nKato does the posting and reconciliation, then tells you where things stand.\n\n#dentalpractice #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
   "posted_at": null
@@ -86,13 +88,110 @@
  },
  {
   "date": "2026-11-23",
-  "id": "2026-11-23_know_what_arrived",
+  "id": "2026-11-23_handled",
+  "pillar": "Video",
+  "type": "video",
+  "animation": "steps",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-23_handled.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-23_handled_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-23_handled_fallback.jpg",
+  "caption": "Received, verified, posted, reconciled.\n\nFour steps your team no longer has to chase.\n\n#dentalbilling #paymentposting #dentalpractice",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-24",
+  "id": "2026-11-24_payer_notice",
+  "pillar": "Benefit line",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-24_payer_notice.jpg"
+  ],
+  "caption": "A remittance tells you what a payer intends to pay. Your bank tells you what it did.\n\nKato verifies the deposit before anything is called reconciled.\n\n#dentalbilling #dentalpractice #dentalofficemanager",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-25",
+  "id": "2026-11-25_know_what_arrived",
   "pillar": "Product outcome teaser",
   "type": "image",
   "images": [
-   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-23_know_what_arrived.jpg"
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-25_know_what_arrived.jpg"
   ],
   "caption": "A missing payment rarely announces itself.\n\nKato flags the remittance that has no matching deposit, and never marks it reconciled until the money is there.\n\nExample shown with sample data.\n\n#dentalbilling #dentalpractice #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-26",
+  "id": "2026-11-26_better_things",
+  "pillar": "Video",
+  "type": "video",
+  "animation": "better_things",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-26_better_things.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-26_better_things_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-26_better_things_fallback.jpg",
+  "caption": "Patients. Family. A table full of people you like.\n\nWe take care of the billing.\n\n#dentist #practiceowner #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-27",
+  "id": "2026-11-27_fridays",
+  "pillar": "Benefit line",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-27_fridays.jpg"
+  ],
+  "caption": "The week's payments, posted and reconciled without you.\n\nGo home.\n\n#dentist #practiceowner #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-28",
+  "id": "2026-11-28_when_records_dont_match",
+  "pillar": "Education carousel",
+  "type": "carousel",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_when_records_dont_match_1.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_when_records_dont_match_2.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_when_records_dont_match_3.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_when_records_dont_match_4.jpg"
+  ],
+  "caption": "Sometimes the remittance and the deposit don't line up.\n\nKato flags it and leaves it unresolved until the money is verified. Nothing gets marked reconciled on a guess.\n\n#dentalbilling #reconciliation #dentalpractice",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-29",
+  "id": "2026-11-29_records_reconciled",
+  "pillar": "Video",
+  "type": "video",
+  "animation": "reconcile",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_records_reconciled.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_records_reconciled_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-29_records_reconciled_fallback.jpg",
+  "caption": "Remittance received. Deposit verified. Payments posted.\n\nThree records that agree, without anyone on your team chasing them.\n\nExample shown with sample data.\n\n#dentalbilling #paymentposting #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null
+ },
+ {
+  "date": "2026-11-30",
+  "id": "2026-11-30_less_chasing",
+  "pillar": "Benefit line",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_less_chasing.jpg"
+  ],
+  "caption": "Less time checking whether billing got done. More time for the work you trained for.\n\n#dentist #dentalpractice #dentalbilling",
   "status": "queued",
   "media_id": null,
   "posted_at": null

@@ -14,7 +14,14 @@ Every post and caption must pass all of these. If a draft cannot, drop it and wr
 10. Golf is an occasional campaign theme (at most one post a week), not the identity.
 
 ## Rotation (per 7 days)
-- 3 benefit lines (staggered type on `wash`, `blur`, or `bone`; one may be the golf theme)
-- 2 product outcome teasers (`feed` list or `card`)
-- 2 education carousels (4 to 5 slides, one billing concept each)
-Do not repeat a headline used in the previous 4 weeks (check `posts/`).
+- 2 to 3 videos (see below), never on consecutive days
+- 2 to 3 benefit-line stills (staggered type or headline on `wash`, `blur`, `bone`, or `dark`; at most one golf theme)
+- 1 to 2 education carousels (4 to 5 slides, one billing concept each)
+- at most 1 product card still
+Do not repeat a headline used in the previous 4 weeks (check `posts/` and `queue.json`).
+
+## Videos
+- New text videos: add an entry to `anims.json` (word-by-word headline, 3 to 5 short lines) and render with `python3 anim.py <name> <outdir>`.
+- The built-in videos (`steps`, `golf`, `timeback`, `reconcile`) may be reused, but not within 4 weeks of their last use.
+- Vary the music: use a different `music` profile (calm, marimba, bell, keys, swell) from the previous video. Audio is synthesized by `anim.py`; never add third-party music.
+- Every video entry needs a cover and a 4:5 fallback still (both written by `anim.py`).
