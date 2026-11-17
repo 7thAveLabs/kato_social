@@ -10,7 +10,7 @@ Every post and caption must pass all of these. If a draft cannot, drop it and wr
 6. No buttons, links, URLs, or "swipe"/"tap" prompts on images. Nothing on a post is tappable.
 7. Lead with time back and relief from billing. Not a dashboard, not a copilot, not outsourced billing, not an AI chatbot.
 8. Do not mention competitors. Do not reuse another brand's lines.
-9. All text on images is set in the serif (headline) font, except inside product UI cards. Captions: one to three short sentences, plain and calm, at most three hashtags, no emoji.
+9. All text on images is set in the serif (headline) font, except inside product UI cards. Captions: one to three short sentences, plain and calm, no emoji. Open with the point, because the first line is what shows in the feed. Use the words a dentist or office manager would type into search (dental billing, payment posting, EOB, ERA, dental practice) naturally in the sentences. Three to five specific hashtags at the end, never more than five; they label the topic and do not add reach. On education carousels, add one line inviting a share, such as "Send this to whoever handles payment posting at your practice." Shares to a friend are the strongest signal for reaching people who do not follow us.
 10. Golf is an occasional campaign theme (at most one post a week), not the identity.
 
 ## Rotation (per 7 days)
@@ -25,3 +25,8 @@ Do not repeat a headline used in the previous 4 weeks (check `posts/` and `queue
 - The built-in videos (`steps`, `golf`, `timeback`, `reconcile`) may be reused, but not within 4 weeks of their last use.
 - Vary the music: use a different `music` profile (calm, marimba, bell, keys, swell) from the previous video. Audio is synthesized by `anim.py`; never add third-party music.
 - Every video entry needs a cover and a 4:5 fallback still (both written by `anim.py`).
+
+## What Instagram rewards (reviewed Nov 2026)
+- Watch time, sends (shares by DM), and likes are the signals Instagram says matter most. Keep videos short (7 to 10 seconds) so they are watched to the end and loop.
+- Reels reach people who do not follow us; carousels and stills mostly reach followers. Keep at least 4 videos in every 14 days.
+- Make education posts worth forwarding to a colleague. That is the test for a carousel.
