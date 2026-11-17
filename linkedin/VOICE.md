@@ -28,7 +28,7 @@ Posts publish under Obay Alshaer's own name (linkedin.com/in/moalshaer) through 
 - No comments on other companies, politics, or topics unrelated to dental billing and building Kato.
 
 ## Cadence
-- 3 to 4 posts a week, weekdays only, 9:15 am America/Toronto. Skip US federal holidays.
+- 3 to 4 posts a week, weekdays only, at a random minute between 9:15 and 11:15 am America/Toronto (a different time each day). Skip US federal holidays.
 - Draft titles: "LI NN | short label", numbered consecutively.
 - Images: optional. Use an existing still from images/ only when it matches the post. Most posts are text only.
 

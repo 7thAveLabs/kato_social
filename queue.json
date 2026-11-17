@@ -11,7 +11,8 @@
   "caption": "Billing was never why you became a dentist.\n\nKato handles payment posting and reconciliation, so those hours go back to your patients and your life.\n\n#dentalpractice #dentalbilling #practiceowner",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:37"
  },
  {
   "date": "2026-11-18",
@@ -27,7 +28,8 @@
   "caption": "\"Paid\" on a remittance is a promise. The deposit is the proof.\n\nKato checks one against the other and shows you what matches and what doesn't.\n\n#dentalbilling #dentalofficemanager #dentalpractice",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:34"
  },
  {
   "date": "2026-11-19",
@@ -40,7 +42,8 @@
   "caption": "Nobody opens a practice to match deposits to EOBs.\n\nKato handles payment posting and reconciliation, so that time goes back to patients.\n\n#dentist #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:41"
  },
  {
   "date": "2026-11-20",
@@ -54,7 +57,8 @@
   "caption": "Friday afternoon should not be spent matching deposits to EOBs.\n\nWork on your swing. We'll handle the billing.\n\n#dentist #golf #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:15"
  },
  {
   "date": "2026-11-21",
@@ -67,7 +71,8 @@
   "caption": "See the result without chasing the update.\n\nKato does the posting and reconciliation, then tells you where things stand.\n\n#dentalpractice #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:18"
  },
  {
   "date": "2026-11-22",
@@ -84,7 +89,8 @@
   "caption": "Every payer payment leaves three records: the remittance, the bank deposit, and the PMS ledger.\n\nReconciled means all three agree. Kato does the checking.\n\n#dentalbilling #reconciliation #dentalofficemanager",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:38"
  },
  {
   "date": "2026-11-23",
@@ -98,7 +104,8 @@
   "caption": "Received, verified, posted, reconciled.\n\nFour steps your team no longer has to chase.\n\n#dentalbilling #paymentposting #dentalpractice",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:24"
  },
  {
   "date": "2026-11-24",
@@ -111,7 +118,8 @@
   "caption": "A remittance tells you what a payer intends to pay. Your bank tells you what it did.\n\nKato verifies the deposit before anything is called reconciled.\n\n#dentalbilling #dentalpractice #dentalofficemanager",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:19"
  },
  {
   "date": "2026-11-25",
@@ -124,7 +132,8 @@
   "caption": "A missing payment rarely announces itself.\n\nKato flags the remittance that has no matching deposit, and never marks it reconciled until the money is there.\n\nExample shown with sample data.\n\n#dentalbilling #dentalpractice #practiceowner",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:39"
  },
  {
   "date": "2026-11-26",
@@ -138,7 +147,8 @@
   "caption": "Patients. Family. A table full of people you like.\n\nWe take care of the billing.\n\n#dentist #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:27"
  },
  {
   "date": "2026-11-27",
@@ -151,7 +161,8 @@
   "caption": "The week's payments, posted and reconciled without you.\n\nGo home.\n\n#dentist #practiceowner #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:19"
  },
  {
   "date": "2026-11-28",
@@ -167,7 +178,8 @@
   "caption": "Sometimes the remittance and the deposit don't line up.\n\nKato flags it and leaves it unresolved until the money is verified. Nothing gets marked reconciled on a guess.\n\n#dentalbilling #reconciliation #dentalpractice",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:25"
  },
  {
   "date": "2026-11-29",
@@ -181,7 +193,8 @@
   "caption": "Remittance received. Deposit verified. Payments posted.\n\nThree records that agree, without anyone on your team chasing them.\n\nExample shown with sample data.\n\n#dentalbilling #paymentposting #practiceowner",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "07:53"
  },
  {
   "date": "2026-11-30",
@@ -194,6 +207,7 @@
   "caption": "Less time checking whether billing got done. More time for the work you trained for.\n\n#dentist #dentalpractice #dentalbilling",
   "status": "queued",
   "media_id": null,
-  "posted_at": null
+  "posted_at": null,
+  "post_time": "08:46"
  }
 ]

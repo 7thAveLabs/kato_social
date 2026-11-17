@@ -2,7 +2,7 @@
 
 Post images, videos, captions, and the generators for Kato's Instagram (@katobilling). This repo is public because Instagram downloads each file from its raw URL at publish time. Nothing here is sensitive.
 
-- `queue.json`: one entry per day (date in America/Chicago) with type (`image`, `carousel`, `video`), file URLs, caption, and status (`queued`, `posted`, `failed`, `skipped`).
+- `queue.json`: one entry per day (date in America/Chicago) with a random `post_time` (America/Chicago, between 7:10 and 8:55), type (`image`, `carousel`, `video`), file URLs, caption, and status (`queued`, `posted`, `failed`, `skipped`).
 - `posts/`: source for still and carousel posts (input to `render.py`).
 - `images/`: rendered 1080x1350 JPEGs, plus `<id>_fallback.jpg` stills for videos.
 - `videos/`: 1080x1920 MP4s and their cover images.
