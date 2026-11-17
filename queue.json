@@ -224,5 +224,103 @@
   "media_id": null,
   "posted_at": null,
   "post_time": "08:16"
+ },
+ {
+  "date": "2026-12-02",
+  "id": "2026-12-02_quiet_mornings",
+  "pillar": "Photo",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-02_quiet_mornings.jpg"
+  ],
+  "caption": "The payments were posted and the deposits were checked before you got in.\n\nThat is what dental billing should feel like.\n\n#dentalbilling #dentalpractice #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "08:33"
+ },
+ {
+  "date": "2026-12-03",
+  "id": "2026-12-03_stat_insurance_challenge",
+  "pillar": "Statistic",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-03_stat_insurance_challenge.jpg"
+  ],
+  "caption": "55% of dentists put insurance issues, including low reimbursement and denied or delayed payments, in their top three challenges for 2026. That is from the ADA Health Policy Institute's Q4 2025 poll.\n\nWe can't change what payers pay. We can take the payment posting and reconciliation off your plate.\n\n#dentalbilling #dentist #dentalpractice",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "07:25"
+ },
+ {
+  "date": "2026-12-04",
+  "id": "2026-12-04_trained_for",
+  "pillar": "Photo",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-04_trained_for.jpg"
+  ],
+  "caption": "The chair is the job. Matching EOBs to bank deposits is not.\n\nKato handles payment posting and reconciliation so your time stays with patients.\n\n#dentist #dentalpractice #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "07:27"
+ },
+ {
+  "date": "2026-12-05",
+  "id": "2026-12-05_better_things_golf",
+  "pillar": "Photo",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-05_better_things_golf.jpg"
+  ],
+  "caption": "Saturday morning belongs somewhere other than the back office.\n\nWe take care of the billing.\n\n#dentist #golf #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "07:16"
+ },
+ {
+  "date": "2026-12-06",
+  "id": "2026-12-06_home_before_sunset",
+  "pillar": "Photo",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-06_home_before_sunset.jpg"
+  ],
+  "caption": "Running a dental practice should not mean posting payments after dinner.\n\nGet your time back.\n\n#practiceowner #dentalpractice #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "07:20"
+ },
+ {
+  "date": "2026-12-07",
+  "id": "2026-12-07_stat_dropping_networks",
+  "pillar": "Statistic",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-07_stat_dropping_networks.jpg"
+  ],
+  "caption": "More than one in three dentists told the ADA Health Policy Institute they plan to drop some insurance networks in 2026.\n\nGetting paid by payers has become its own job. Kato is built to take the posting and reconciliation part of it off your hands.\n\n#dentalbilling #dentist #dentalpractice",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "07:34"
+ },
+ {
+  "date": "2026-12-08",
+  "id": "2026-12-08_billing_is_ours",
+  "pillar": "Photo",
+  "type": "image",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-08_billing_is_ours.jpg"
+  ],
+  "caption": "You look after patients. We take care of the billing.\n\nPayment posting and reconciliation for dental practices, handled by Kato.\n\n#dentalpractice #dentalbilling #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "08:41"
  }
 ]

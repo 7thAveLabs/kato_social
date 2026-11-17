@@ -2,7 +2,7 @@
 
 Every post and caption must pass all of these. If a draft cannot, drop it and write a different one.
 
-1. No invented customers, quotes, hours saved, dollar results, percentages, or statistics. Use a number only if a founder supplied it with a source.
+1. No invented customers, quotes, hours saved, dollar results, percentages, or statistics. Industry statistics are allowed only if they are listed in STATS.md, worded as recorded there, with the source shown on the image and in the caption. Never present an industry statistic as a Kato result.
 2. Describe only what joinkato.com says Kato handles today: payment posting and reconciliation (remittance, bank deposit verification, PMS posting, flagging what does not match). No claims about claim submission, denials, eligibility, banking, cards, or financing.
 3. Never name a specific PMS as supported and never claim write access to one.
 4. Product visuals use made-up sample data only (never real practice, patient, or payer data). No disclaimer label on the image (founder decision, Nov 16, 2026). When an image shows a product screen with dollar amounts, add "Example shown with sample data." to the caption.
@@ -30,3 +30,8 @@ Do not repeat a headline used in the previous 4 weeks (check `posts/` and `queue
 - Watch time, sends (shares by DM), and likes are the signals Instagram says matter most. Keep videos short (7 to 10 seconds) so they are watched to the end and loop.
 - Reels reach people who do not follow us; carousels and stills mostly reach followers. Keep at least 4 videos in every 14 days.
 - Make education posts worth forwarding to a colleague. That is the test for a carousel.
+
+## Photo posts
+- Use only photos in `photos/` (see `photos/CREDITS.md`). In a slide, set `"photo": "<file name without .jpg>"`; render.py applies the filter and white serif text.
+- A label is a short staggered line; a statistic uses `stat`, `sub` and `source`.
+- At most 3 photo or statistic posts per 7 days, and do not reuse a photo within 4 weeks.

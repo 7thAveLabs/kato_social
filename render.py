@@ -1,6 +1,6 @@
 """Kato Instagram renderer v2. python3 render.py posts.json out/
 Slides are 1080x1350 JPEG. No buttons, links or URLs on images: nothing on a post is tappable."""
-import asyncio, json, sys, html, pathlib
+import asyncio, json, sys, html, pathlib, io, base64
 from playwright.async_api import async_playwright
 W, H = 1080, 1350
 CSS = """
@@ -17,6 +17,10 @@ background:radial-gradient(520px 420px at 22% 18%,#cdbfa4 0,transparent 70%),rad
 radial-gradient(700px 520px at 30% 78%,#a39478 0,transparent 70%),radial-gradient(520px 480px at 88% 92%,#d9cfbb 0,transparent 70%)}
 .blur:after{content:"";position:absolute;inset:0;background:rgba(17,17,17,.18)}
 .post>*{position:relative;z-index:2}
+.photo{color:#fff;background-size:cover;background-position:center}
+.photo .sub{color:#f3efe6}.photo .tag{color:#e8e5de}
+.stat{font-family:var(--serif);font-size:300px;line-height:.86;letter-spacing:-.05em}
+.src{font-size:24px;color:#e8e5de;opacity:.85;margin-top:8px}
 .top{display:flex;justify-content:space-between;align-items:baseline}
 .mark{font-family:var(--serif);font-size:54px;letter-spacing:-.04em;line-height:1}
 .tag{font-family:var(--serif);font-size:26px;letter-spacing:.04em;color:var(--muted);font-weight:500}
@@ -49,6 +53,23 @@ em{font-style:italic}
 .golf{width:100%;height:340px}
 .golf svg{width:100%;height:100%;display:block}
 """
+
+def photo_bg(name):
+    """Load photos/<name>.jpg, crop to 4:5, apply the Kato filter (muted, warm, darkened, soft, light grain), return a data URI."""
+    from PIL import Image, ImageEnhance, ImageFilter
+    import numpy as np
+    im=Image.open(pathlib.Path(__file__).with_name("photos")/f"{name}.jpg").convert("RGB")
+    w,h=im.size; tw=int(h*W/H)
+    if tw<=w: im=im.crop(((w-tw)//2,0,(w-tw)//2+tw,h))
+    else:
+        th=int(w*H/W); im=im.crop((0,(h-th)//2,w,(h-th)//2+th))
+    im=im.resize((W,H),Image.LANCZOS)
+    im=ImageEnhance.Color(im).enhance(0.62); im=ImageEnhance.Contrast(im).enhance(0.92); im=im.filter(ImageFilter.GaussianBlur(1.4))
+    a=np.asarray(im).astype("float32"); k=min(0.62,78.0/max(1.0,a.mean())); a=a*np.array([1.04,1.0,0.90])*k+np.array([20,16,11])   # warm tint, darken, lift blacks
+    y=np.linspace(0,1,H)[:,None,None]; a*=1-0.22*np.abs(y-0.45)                                   # soft vertical vignette
+    a+=np.random.default_rng(11).normal(0,5.5,a.shape)                                           # film grain
+    im=Image.fromarray(np.clip(a,0,255).astype("uint8")); b=io.BytesIO(); im.save(b,"JPEG",quality=88)
+    return "data:image/jpeg;base64,"+base64.b64encode(b.getvalue()).decode()
 def em(s):
     out=""
     for i,p in enumerate(html.escape(s).split("*")): out+=f"<em>{p}</em>" if i%2 else p
@@ -67,18 +88,21 @@ def slide(s,i,n):
         '<path d="M642 54 L758 92 L642 130 Z" fill="#111"/>'
         '<circle cx="330" cy="262" r="19" fill="#fff" stroke="#111" stroke-width="3"/>'
         '<path d="M150 262 H170 M190 262 H222 M246 262 H290" stroke="#111" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/></svg></div>')
+    if s.get("stat"): b+=f'<div class="stat">{html.escape(s["stat"])}</div>'
     if s.get("num"): b+=f'<div class="num">{html.escape(s["num"])}</div>'
     if s.get("stagger"):
         k=len(s["stagger"]); step=s.get("step",110)
         b+=f'<div class="stag" style="font-size:{s.get("fs",124)}px">'+"".join(f'<span style="margin-left:{j*step}px">{em(w)}</span>' for j,w in enumerate(s["stagger"]))+'</div>'
     if s.get("headline"): b+=f'<h1 class="{s.get("size","")}">{em(s["headline"])}</h1>'
     if s.get("sub"): b+=f'<div class="sub">{em(s["sub"])}</div>'
+    if s.get("source"): b+=f'<div class="src">{html.escape(s["source"])}</div>'
     if s.get("bars"): b+='<div class="bars">'+"".join(f'<div><b>{html.escape(a)}</b><span>{html.escape(c)}</span></div>' for a,c in s["bars"])+'</div>'
     if s.get("feed"):
         b+='<div class="feed">'+"".join(f'<div style="opacity:{o}"><i></i>{html.escape(t)}</div>' for t,o in s["feed"])+'</div>'
     if s.get("card"): b+=card(s["card"])
     tag=f"{i+1:02d} / {n:02d}" if n>1 else ""
-    return (f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><div class="post {s.get("theme","")}">'
+    ph=s.get("photo"); bg=f' style="background-image:url({photo_bg(ph)})"' if ph else ""
+    return (f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><div class="post {s.get("theme","")}{" photo" if ph else ""}"{bg}>'
             f'<div class="top"><span class="mark">kato.</span><span class="tag">{tag}</span></div>'
             f'<div class="body {"c" if s.get("center") else ""}">{b}</div></div>')
 async def main(pp,od):
