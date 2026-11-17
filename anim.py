@@ -1,6 +1,6 @@
 """Kato video renderer. python3 anim.py <name|all> <outdir>
 Writes kato_<name>.mp4 (1080x1920, 30fps, with original synthesized audio), <name>_cover.jpg and <name>_fallback.jpg (4:5 still).
-Built-in: steps, golf, timeback, reconcile. Add word-by-word text videos in anims.json (see stagger_anim)."""
+Built-in: steps, golf, timeback, reconcile, intro (the launch video; its sound is unique to it, do not reuse). Add word-by-word text videos in anims.json (see stagger_anim)."""
 import asyncio, sys, pathlib, subprocess, wave, json, numpy as np
 from playwright.async_api import async_playwright
 W,H,FPS=1080,1920,30
@@ -91,6 +91,55 @@ window.render=t=>{$$('.row').forEach((r,i)=>{const e=ease(seg(t,T[i],.4)); r.que
  const e=ease(seg(t,5.9,.5)); $('#bs .a').style.opacity=1-e; $('#bs .b').style.opacity=e; $('.bt').style.background=`rgb(${243-6*e},${239-4*e},${230-2*e})`;
  const e2=ease(seg(t,6.6,.8)); $('#s').style.opacity=e2;};</script>""")
 
+
+# 5. intro: the dot from "kato." drops in, rolls across and writes the wordmark, then lands as the period.
+def _intro_audio(dur,path,sr=44100):
+    """One-off sound for the intro only: three soft thuds as the dot lands, a low rolling rumble, then a single warm chord that blooms and fades."""
+    rng=np.random.default_rng(7); n=int(dur*sr); t=np.arange(n)/sr; y=np.zeros(n)
+    for at,amp in [(0.90,.9),(1.30,.5),(1.55,.25)]:                      # thuds: pitch drops, never rises
+        k=int(at*sr); tt=np.arange(n-k)/sr; f=58+70*np.exp(-tt*28)
+        y[k:]+=amp*np.sin(2*np.pi*np.cumsum(f)/sr)*np.exp(-tt*16)
+    noise=rng.standard_normal(n); kern=np.ones(260)/260; low=np.convolve(noise,kern,mode="same"); low=np.convolve(low,kern,mode="same")
+    env=np.clip((t-1.7)/0.25,0,1)*np.clip((3.05-t)/0.3,0,1)                 # roll: filtered noise with a slow wobble
+    y+=9.0*low*env*(0.7+0.3*np.sin(2*np.pi*7*t))
+    k=int(3.0*sr); tt=np.arange(n-k)/sr                                    # bloom: one chord, slow attack, long tail
+    chord=sum(a*(np.sin(2*np.pi*f*tt)+np.sin(2*np.pi*f*1.003*tt)) for f,a in [(146.83,.5),(220.0,.42),(329.63,.3),(369.99,.26),(440.0,.16),(880.0,.05)])
+    y[k:]+=0.42*chord*(1-np.exp(-tt*5))*np.exp(-tt*0.55)*(1+0.05*np.sin(2*np.pi*0.8*tt))
+    for d,g in [(.11,.3),(.23,.22),(.37,.15),(.53,.1)]:                    # small room
+        dd=int(d*sr); y[dd:]+=g*y[:-dd]
+    y*=np.clip((dur-t)/1.2,0,1); y=y/max(1e-9,np.abs(y).max())*0.75
+    with wave.open(path,'wb') as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((y*32767).astype('<i2').tobytes())
+ANIMS["intro"]=dict(dur=9.0,events=[],crop=285,audio_fn=_intro_audio,html=BASE+"""
+<div class="p wash">
+<div id="grp" style="position:absolute;left:0;right:0;top:0;bottom:0">
+ <div id="wm" style="position:absolute;left:0;right:0;top:760px;text-align:center;font-size:330px;line-height:1;letter-spacing:-.045em;white-space:nowrap"><span id="txt">kato</span><span id="per" style="visibility:hidden">.</span><span id="bl" style="display:inline-block;width:0;height:0;vertical-align:baseline"></span></div>
+ <div id="dot" style="position:absolute;border-radius:50%;background:#111;left:0;top:0"></div>
+</div>
+<div class="c" id="t1" style="top:1130px;text-align:center;font-size:96px;letter-spacing:-.035em;opacity:0">Get your <em>time back.</em></div>
+<div class="c" id="t2" style="top:1290px;text-align:center;font-size:52px;letter-spacing:-.01em;color:#626262;opacity:0">We take care of the billing.</div>
+</div>
+<script>{
+const txt=$('#txt'),per=$('#per'),dot=$('#dot'); let G=null;
+function geo(){const a=txt.getBoundingClientRect(),p=per.getBoundingClientRect(),b=$('#bl').getBoundingClientRect();
+  const r=Math.round(a.height*0.062); return {l:a.left,xf:p.left+p.width*0.5,base:b.top,r,x0:a.left-90};}
+const fall=(t)=>{ // height above the floor
+  if(t<0.4) return 1200; if(t<0.9){const u=(t-0.4)/0.5; return 1200*(1-u*u);}
+  if(t<1.3){const u=(t-0.9)/0.4; return 150*4*u*(1-u);} if(t<1.55){const u=(t-1.3)/0.25; return 44*4*u*(1-u);}
+  if(t>=7.1&&t<7.6){const u=(t-7.1)/0.5; return 70*4*u*(1-u);} return 0;};
+window.render=t=>{ if(!G) G=geo(); const g=G;
+  const roll=io(seg(t,1.7,1.3)); const x=g.x0+(g.xf-g.x0)*roll; const h=fall(t);
+  const sq=(t>=0.9&&t<0.98)||(t>=1.3&&t<1.36)?0.78:1;                      // squash on landing
+  const pop=1+0.35*Math.sin(Math.PI*seg(t,3.0,0.35));                        // one pulse when it becomes the period
+  dot.style.width=dot.style.height=(2*g.r)+'px';
+  dot.style.transform=`translate(${x-g.r}px,${g.base-2*g.r-h}px) scale(${pop/ (sq<1?0.9:1)},${pop*sq})`; dot.style.transformOrigin='50% 100%';
+  dot.style.opacity=t<0.4?0:1;
+  const rev=Math.max(0,x-g.r-6-g.l); txt.style.clipPath=`inset(-20% ${Math.max(0,txt.getBoundingClientRect().width-rev)}px -20% 0)`;
+  const up=ease(seg(t,3.7,0.9)); $('#grp').style.transform=`translateY(${-150*up}px)`;
+  const a=ease(seg(t,4.4,0.9)); $('#t1').style.opacity=a; $('#t1').style.transform=`translateY(${(1-a)*24}px)`;
+  $('#t2').style.opacity=ease(seg(t,5.7,0.9));
+};}</script>""")
+
 PROFILES={
  "calm":   dict(scale=[261.63,293.66,329.63,392.0,440.0,523.25], pad=[130.81,196.0,261.63,329.63], timbre="sine",   echo=.28),
  "marimba":dict(scale=[220.0,261.63,293.66,329.63,392.0,440.0],  pad=[110.0,164.81,220.0],          timbre="marimba",echo=.19),
@@ -150,7 +199,7 @@ async def run(names,out):
             for i in range(nf):
                 await pg.evaluate(f"render({i/FPS})")
                 await pg.screenshot(path=str(fd/f"{i:04d}.jpg"),type="jpeg",quality=90)
-            audio(a["dur"],a["events"],str(out/f"{nm}.wav"),a.get("music","calm"))
+            (a["audio_fn"](a["dur"],str(out/f"{nm}.wav")) if a.get("audio_fn") else audio(a["dur"],a["events"],str(out/f"{nm}.wav"),a.get("music","calm")))
             subprocess.run(["ffmpeg","-y","-loglevel","error","-framerate",str(FPS),"-i",str(fd/"%04d.jpg"),"-i",str(out/f"{nm}.wav"),
               "-c:v","libx264","-pix_fmt","yuv420p","-crf","18","-preset","medium","-c:a","aac","-b:a","160k","-movflags","+faststart","-shortest",str(out/f"kato_{nm}.mp4")],check=True)
             import shutil; from PIL import Image

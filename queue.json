@@ -1,14 +1,14 @@
 [
  {
   "date": "2026-11-17",
-  "id": "2026-11-17_time_back",
+  "id": "2026-11-17_meet_kato",
   "pillar": "Video",
   "type": "video",
-  "animation": "timeback",
-  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_time_back.mp4",
-  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_time_back_cover.jpg",
-  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-17_time_back_fallback.jpg",
-  "caption": "Billing was never why you became a dentist.\n\nKato handles payment posting and reconciliation, so those hours go back to your patients and your life.\n\n#dentalpractice #dentalbilling #practiceowner",
+  "animation": "intro",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_meet_kato.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-17_meet_kato_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-17_meet_kato_fallback.jpg",
+  "caption": "Meet Kato.\n\nPayment posting and reconciliation for dental practices, handled.\n\nGet your time back. We take care of the billing.\n\n#dentalpractice #dentalbilling #practiceowner",
   "status": "queued",
   "media_id": null,
   "posted_at": null,
@@ -209,5 +209,20 @@
   "media_id": null,
   "posted_at": null,
   "post_time": "08:46"
+ },
+ {
+  "date": "2026-12-01",
+  "id": "2026-12-01_time_back",
+  "pillar": "Video",
+  "type": "video",
+  "animation": "timeback",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_time_back.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_time_back_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-01_time_back_fallback.jpg",
+  "caption": "Billing was never why you became a dentist.\n\nKato handles payment posting and reconciliation, so those hours go back to your patients and your life.\n\n#dentalpractice #dentalbilling #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "08:16"
  }
 ]
