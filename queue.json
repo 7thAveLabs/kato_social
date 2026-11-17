@@ -92,7 +92,7 @@
   "images": [
    "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-23_know_what_arrived.jpg"
   ],
-  "caption": "A missing payment rarely announces itself.\n\nKato flags the remittance that has no matching deposit, and never marks it reconciled until the money is there.\n\n#dentalbilling #dentalpractice #practiceowner",
+  "caption": "A missing payment rarely announces itself.\n\nKato flags the remittance that has no matching deposit, and never marks it reconciled until the money is there.\n\nExample shown with sample data.\n\n#dentalbilling #dentalpractice #practiceowner",
   "status": "queued",
   "media_id": null,
   "posted_at": null

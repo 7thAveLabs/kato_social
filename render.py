@@ -19,14 +19,14 @@ radial-gradient(700px 520px at 30% 78%,#a39478 0,transparent 70%),radial-gradien
 .post>*{position:relative;z-index:2}
 .top{display:flex;justify-content:space-between;align-items:baseline}
 .mark{font-family:var(--serif);font-size:54px;letter-spacing:-.04em;line-height:1}
-.tag{font-size:21px;letter-spacing:.14em;color:var(--muted);font-weight:500}
+.tag{font-family:var(--serif);font-size:26px;letter-spacing:.04em;color:var(--muted);font-weight:500}
 .dark .tag,.dark .sub,.blur .tag{color:#b9b6ae} .blur .sub{color:#efeae0}
 .body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:40px}
 .body.c{align-items:center;text-align:center}
 h1{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-height:1;font-size:132px}
 h1.m{font-size:108px} h1.s{font-size:88px;line-height:1.04} h1.xs{font-size:64px;line-height:1.08;letter-spacing:-.03em}
 em{font-style:italic}
-.sub{font-size:42px;line-height:1.35;color:var(--muted);max-width:820px}
+.sub{font-family:var(--serif);font-size:50px;line-height:1.25;letter-spacing:-.015em;color:var(--muted);max-width:840px}
 .stag{display:flex;flex-direction:column;gap:26px;font-family:var(--serif);font-size:124px;letter-spacing:-.04em;line-height:1}
 .note{font-size:24px;color:var(--muted);margin-top:18px} .blur .note,.dark .note{color:#cfc9bc}
 .card{background:var(--paper);color:var(--ink);border-radius:28px;padding:40px 44px;border:1px solid var(--line);box-shadow:0 24px 60px -30px rgba(17,17,17,.25)}
@@ -43,7 +43,7 @@ em{font-style:italic}
 .feed i{width:30px;height:30px;border-radius:50%;border:2px solid currentColor;display:inline-block;flex:none;position:relative}
 .feed i:after{content:"";position:absolute;left:8px;top:4px;width:8px;height:14px;border:solid currentColor;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
 .bars{display:flex;flex-direction:column;gap:22px;width:100%}
-.bars div{height:92px;border-radius:14px;background:var(--mist);display:flex;align-items:center;padding:0 32px;font-size:28px;color:var(--muted);justify-content:space-between}
+.bars div{height:92px;border-radius:14px;background:var(--mist);display:flex;align-items:center;padding:0 32px;font-family:var(--serif);font-size:32px;color:var(--muted);justify-content:space-between}
 .bars div b{font-weight:500;color:var(--ink)}
 .num{font-family:var(--serif);font-size:190px;line-height:.8;letter-spacing:-.05em;opacity:.16}
 .golf{width:100%;height:340px}
@@ -57,7 +57,7 @@ def card(c):
     rows="".join(f'<div class="row"><span class="k">{html.escape(k)}</span><span class="st"><span class="dot {"" if ok else "open"}">{"&#10003;" if ok else "!"}</span>{html.escape(v)}</span></div>' for k,v,ok in c["rows"])
     return (f'<div><div class="card"><div class="hd"><span>{html.escape(c["title"])}</span><span class="mark">kato.</span></div>'
             f'<div class="batch"><div><b>{html.escape(c["batch"])}</b><span>{html.escape(c["status"])}</span></div><div class="amt">{html.escape(c["amount"])}</div></div>{rows}</div>'
-            f'<div class="note">Illustrative demo. Synthetic data.</div></div>')
+            '</div>')
 def slide(s,i,n):
     b=""
     if s.get("golf"): b+=('<div class="golf"><svg viewBox="0 0 896 340"><ellipse cx="640" cy="282" rx="150" ry="16" fill="#e4dfd3"/>'
@@ -75,7 +75,7 @@ def slide(s,i,n):
     if s.get("sub"): b+=f'<div class="sub">{em(s["sub"])}</div>'
     if s.get("bars"): b+='<div class="bars">'+"".join(f'<div><b>{html.escape(a)}</b><span>{html.escape(c)}</span></div>' for a,c in s["bars"])+'</div>'
     if s.get("feed"):
-        b+='<div class="feed">'+"".join(f'<div style="opacity:{o}"><i></i>{html.escape(t)}</div>' for t,o in s["feed"])+'</div><div class="note">Illustrative. Synthetic data.</div>'
+        b+='<div class="feed">'+"".join(f'<div style="opacity:{o}"><i></i>{html.escape(t)}</div>' for t,o in s["feed"])+'</div>'
     if s.get("card"): b+=card(s["card"])
     tag=f"{i+1:02d} / {n:02d}" if n>1 else ""
     return (f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><div class="post {s.get("theme","")}">'
