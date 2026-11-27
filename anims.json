@@ -214,5 +214,35 @@
   "end": "Kato checks the *bank.*",
   "theme": "wash",
   "size": 120
+ },
+ "text_kato": {
+  "kind": "phone",
+  "msgs": [
+   [
+    "u",
+    "Are we caught up on payer payments?"
+   ],
+   [
+    "k",
+    "Yes. 14 payments posted this week, every deposit verified."
+   ],
+   [
+    "u",
+    "Anything I need to look at?"
+   ],
+   [
+    "k",
+    "One. A $912.00 remittance with no deposit yet. Flagged, and I'm watching the bank."
+   ],
+   [
+    "u",
+    "Thanks."
+   ]
+  ],
+  "end": "Just\n*text*\nKato.",
+  "sub": "Ask about your payments the way you'd ask a person.",
+  "note": "In the works. Not live yet.",
+  "clock_time": "9:12",
+  "theme": "ink"
  }
 }

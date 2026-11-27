@@ -215,5 +215,79 @@ window.render=t=>{{
 }};}}</script>"""
     return dict(dur=te + 2.8, html=h, events=[])
 
-KINDS = dict(chat=chat, todo=todo, clock=clock, match=match, define=define, bars=bars, typed=typed)
+def phone(BASE, msgs, end, sub="", contact="Kato", clock_time="9:12", stamp="Today 9:12 PM", theme="ink", note=""):
+    """A text-message thread on a phone, with Kato as the contact. msgs: [["u"|"k", text], ...] (4 or 5, user first).
+    Kato's own messaging screen design: no platform names, logos or brand marks. Sample figures only, and never a patient name.
+    `note` is a small line under the end headline (for example to say a capability is not live yet)."""
+    T=[]; t=0.35
+    for side,_ in msgs:
+        t += 1.9 if side=="k" else 1.2
+        T.append(round(t,2))
+    te=T[-1]+2.3
+    rows="".join(f'<div class="b {s}"><span>{_h.escape(x)}</span></div>' for s,x in msgs)
+    h = BASE + X + f"""<style>
+.stage{{background:radial-gradient(900px 1100px at 62% 46%,#4a3f33 0%,#211d19 48%,#0e0d0c 100%);color:#fff}}
+#persp{{position:absolute;inset:0;perspective:2600px;z-index:2}}
+#ph{{position:absolute;left:100px;top:236px;width:880px;height:1640px;border-radius:118px;padding:14px;transform-style:preserve-3d;
+ background:linear-gradient(135deg,#8d8a86 0%,#3a3836 18%,#161514 50%,#4b4845 82%,#9a9792 100%);
+ box-shadow:0 0 0 2px #0b0b0b,-60px 90px 160px -30px rgba(0,0,0,.85),0 0 220px -40px rgba(255,214,160,.22)}}
+#ph:before{{content:"";position:absolute;left:-7px;top:330px;width:7px;height:120px;border-radius:4px 0 0 4px;background:#3c3a38;box-shadow:0 170px 0 #3c3a38}}
+#ph:after{{content:"";position:absolute;right:-7px;top:420px;width:7px;height:200px;border-radius:0 4px 4px 0;background:#3c3a38}}
+#sc{{position:relative;width:100%;height:100%;border-radius:104px;background:#fbfaf8;overflow:hidden;font-family:Inter,sans-serif;letter-spacing:-.01em;color:#111;border:6px solid #050505}}
+#gl{{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 100%);z-index:9;pointer-events:none}}
+#sb{{position:absolute;left:0;right:0;top:0;height:104px;z-index:5}}
+#tm{{position:absolute;left:78px;top:40px;font-size:33px;font-weight:600;letter-spacing:-.02em}}
+#isl{{position:absolute;left:50%;top:30px;width:232px;height:64px;margin-left:-116px;border-radius:34px;background:#050505}}
+#ic{{position:absolute;right:66px;top:42px;display:flex;gap:12px;align-items:center}}
+#hd{{position:absolute;left:0;right:0;top:0;height:318px;background:rgba(247,245,241,.96);border-bottom:1px solid #e4e1da;z-index:4;text-align:center}}
+#av{{width:124px;height:124px;border-radius:50%;background:linear-gradient(160deg,#2b2926,#0c0c0c);color:#fff;margin:122px auto 0;font-family:'Newsreader','Lora',serif;font-size:60px;letter-spacing:-.04em;line-height:116px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}}
+#nm{{font-size:29px;font-weight:500;margin-top:10px;color:#111}}#nm i{{display:inline-block;width:11px;height:11px;border-right:3px solid #9a968e;border-top:3px solid #9a968e;transform:rotate(45deg);margin-left:8px;vertical-align:3px}}
+#bk{{position:absolute;left:44px;top:150px;width:74px;height:74px;border-radius:50%;background:#ece9e3}}#bk:after{{content:"";position:absolute;left:30px;top:25px;width:20px;height:20px;border-left:5px solid #111;border-bottom:5px solid #111;transform:rotate(45deg);border-radius:2px}}
+#vc{{position:absolute;right:44px;top:150px;width:74px;height:74px;border-radius:50%;background:#ece9e3}}
+#vp{{position:absolute;left:0;right:0;top:318px;bottom:170px;overflow:hidden}}
+#th{{position:absolute;left:34px;right:34px;bottom:22px;display:flex;flex-direction:column;gap:12px}}
+#sp{{align-self:center;font-size:24px;color:#8f8b84;font-weight:500;padding:6px 0 14px}}
+.b{{max-width:650px;padding:24px 32px;border-radius:44px;font-size:42px;line-height:1.24;opacity:0}}
+.b.u{{align-self:flex-end;background:linear-gradient(180deg,#3d8bff,#1f6ff0);color:#fff;border-bottom-right-radius:14px;box-shadow:0 10px 22px -14px rgba(31,111,240,.9)}}
+.b.k{{align-self:flex-start;background:#ebe8e2;color:#111;border-bottom-left-radius:14px}}
+#ty{{position:absolute;left:34px;bottom:22px;display:flex;gap:11px;padding:32px 34px;border-radius:44px;border-bottom-left-radius:14px;background:#ebe8e2;opacity:0}}
+#ty i{{width:18px;height:18px;border-radius:50%;background:#8f8b84;display:block}}
+#ip{{position:absolute;left:34px;right:34px;bottom:58px;height:92px;display:flex;align-items:center;gap:18px}}
+#pl{{width:84px;height:84px;border-radius:50%;background:#ece9e3;position:relative;flex:none}}#pl:before,#pl:after{{content:"";position:absolute;left:26px;top:40px;width:32px;height:4px;border-radius:2px;background:#6f6b64}}#pl:after{{transform:rotate(90deg)}}
+#fd{{flex:1;height:84px;border:2px solid #dcd8d0;border-radius:44px;font-size:33px;color:#b1ada5;line-height:80px;padding-left:34px;background:#fff}}
+#hb{{position:absolute;left:50%;bottom:18px;width:270px;height:10px;margin-left:-135px;border-radius:5px;background:#111}}
+</style>
+<div class="p stage"><div class="mark">kato.</div>
+<div id="persp"><div id="ph"><div id="sc">
+<div id="hd"><div id="bk"></div><div id="vc"></div><div id="av">k.</div><div id="nm">{_h.escape(contact)}<i></i></div></div>
+<div id="sb"><div id="tm">{_h.escape(clock_time)}</div><div id="isl"></div><div id="ic">
+<svg width="38" height="26" viewBox="0 0 38 26"><rect x="0" y="17" width="6" height="9" rx="1.5"/><rect x="10" y="12" width="6" height="14" rx="1.5"/><rect x="20" y="6" width="6" height="20" rx="1.5"/><rect x="30" y="0" width="6" height="26" rx="1.5"/></svg>
+<svg width="36" height="26" viewBox="0 0 36 26"><path d="M2 9 A23 23 0 0 1 34 9" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><path d="M9 16 A13 13 0 0 1 27 16" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><circle cx="18" cy="22.5" r="3.5"/></svg>
+<svg width="56" height="26" viewBox="0 0 56 26"><rect x="1.5" y="1.5" width="46" height="23" rx="7.5" fill="none" stroke="#111" stroke-opacity=".4" stroke-width="2.5"/><rect x="5" y="5" width="34" height="16" rx="4.5"/><rect x="50.5" y="8.5" width="4" height="9" rx="2" fill-opacity=".4"/></svg></div></div>
+<div id="vp"><div id="th"><div id="sp">{_h.escape(stamp)}</div>{rows}</div><div id="ty"><i></i><i></i><i></i></div></div>
+<div id="ip"><div id="pl"></div><div id="fd">Message Kato</div></div><div id="hb"></div><div id="gl"></div>
+</div></div></div>
+<div class="end" id="end" style="top:600px;font-size:150px;line-height:.98">{_e(end)}</div>
+<div class="sub" id="sub" style="top:1170px;font-size:60px;color:#d8d1c3">{_e(sub)}</div>
+<div class="sub" id="nt" style="top:1440px;font-size:44px;font-style:italic;color:#a59d8e">{_e(note)}</div></div>
+<script>{{const T={json.dumps(T)},S={json.dumps([m[0] for m in msgs])},te={te},GAP=12,TYH=94;
+const B=$$('.b'),ph=$('#ph'),th=$('#th'); let Hh=null;
+window.render=t=>{{
+ if(!Hh) Hh=B.map(b=>b.offsetHeight);
+ const inn=ease(seg(t,0,.9)), out=io(seg(t,te-.7,.8));
+ ph.style.opacity=Math.min(1,inn*1.4)*(1-out);
+ ph.style.transform=`translateY(${{(1-inn)*220+out*240}}px) rotateY(${{-13+7*inn+Math.sin(t*.55)*2.2}}deg) rotateX(${{5-2*inn+Math.cos(t*.45)*1.1}}deg) rotateZ(${{-1.2+Math.sin(t*.4)*.4}}deg) scale(${{.9+.1*inn-.08*out}})`;
+ let off=0, typing=0;
+ B.forEach((b,i)=>{{const e=ease(seg(t,T[i],.32)); off+=(1-e)*(Hh[i]+GAP);
+   b.style.opacity=seg(t,T[i],.16); b.style.transform=`scale(${{.72+.28*e}})`; b.style.transformOrigin=S[i]=='u'?'100% 100%':'0% 100%';
+   if(S[i]=='k') typing=Math.max(typing,ease(seg(t,T[i]-1.3,.22))*(1-seg(t,T[i]-.02,.1)));}});
+ th.style.transform=`translateY(${{off-typing*(TYH+GAP)}}px)`;
+ const y=$('#ty'); y.style.opacity=typing; y.style.transform=`scale(${{.8+.2*typing}})`; y.style.transformOrigin='0% 100%';
+ [...y.children].forEach((d,j)=>{{const w=Math.max(0,Math.sin(t*8-j*.85)); d.style.transform=`translateY(${{-7*w}}px)`; d.style.opacity=.45+.55*w;}});
+ const e=ease(seg(t,te,.7)); $('#end').style.opacity=e; $('#end').style.transform=`translateY(${{(1-e)*34}}px)`;
+ $('#sub').style.opacity=ease(seg(t,te+.8,.7)); $('#nt').style.opacity=ease(seg(t,te+1.5,.7));
+}};}}</script>"""
+    return dict(dur=te + 3.4, html=h, events=[])
+
+KINDS = dict(phone=phone, chat=chat, todo=todo, clock=clock, match=match, define=define, bars=bars, typed=typed)
 def build(kind, BASE, params): return KINDS[kind](BASE, **params)
