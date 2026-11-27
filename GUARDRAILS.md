@@ -31,7 +31,7 @@ Office managers and clinic owners. Every post is about a moment they recognize o
 - Start with the hook: the first thing on screen is the recognizable moment or the question, not the brand line. Keep videos 7 to 11 seconds.
 - Keep everything that matters between y=250 and y=1560; Reels cover the top and bottom of the frame.
 - Illustrations of time (`clock`, `bars`) never show a number of hours or a percentage. They are pictures of the idea, not results.
-- Sound: every video has its own sound. Videos from `kinds.py` get one generated from their name (`_auto_sound` in `anim.py`), which keeps its own pace and never plays a note per on-screen step. A hand-written `_snd_*` function can be named in the `sound` field instead. Audio is synthesized by `anim.py`; never add third-party music.
+- Sound: every video has its own sound. Preferred: a licensed Epidemic Sound track (founder decision, Nov 27, 2026, replacing the earlier no-third-party-music rule), applied as described in `MUSIC.md` and logged there; never commit the downloaded track itself. When a session has no Epidemic Sound connector or cannot download from it, videos keep the sound `anim.py` generates from their name, which keeps its own pace and never plays a note per on-screen step. Thread videos (`chat`, `phone`) may carry a soft message sound when each message appears.
 - Every video entry needs a cover and a 4:5 fallback still (both written by `anim.py`).
 - Voiceover videos: when a founder supplies a recorded voiceover, it replaces the generated sound and its script is shown as on-screen text, because most viewers watch with sound off.
 
