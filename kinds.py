@@ -216,10 +216,11 @@ window.render=t=>{{
     return dict(dur=te + 2.8, html=h, events=[])
 
 def phone(BASE, msgs, end, sub="", contact="Front desk", avatar="FD", clock_time="9:12", stamp="Today 9:12 PM", theme="ink", note=""):
-    """A text-message thread on a phone between two people at a practice (for example the owner and the front desk).
-    msgs: [["u"|"k", text], ...] (4 or 5): "u" is the phone's owner (right), "k" is the contact replying (left). The replies say what Kato has already done.
-    The contact is a person or role, never Kato: Kato does not answer texts today. `avatar` is the contact's initials.
+    """A text-message thread on a phone. msgs: [["u"|"k", text], ...] (4 or 5): "u" is the phone's owner (right), "k" is the contact replying (left).
+    Two uses: the owner texting Kato (contact="Kato", avatar="k.", Kato answers in the first person), or two people at a practice
+    (for example contact="Front desk", avatar="FD") where the replies say what Kato has already done.
     Kato's own messaging screen design: no platform names, logos or brand marks. Sample figures only, and never a patient name."""
+    AVS = "" if avatar=="k." else "font-family:Inter,sans-serif;font-size:44px;font-weight:500;letter-spacing:0;line-height:124px;background:linear-gradient(160deg,#a9a49b,#7d786f)"
     T=[]; t=0.35
     for side,_ in msgs:
         t += 1.9 if side=="k" else 1.2
@@ -260,7 +261,7 @@ def phone(BASE, msgs, end, sub="", contact="Front desk", avatar="FD", clock_time
 </style>
 <div class="p stage"><div class="mark">kato.</div>
 <div id="persp"><div id="ph"><div id="sc">
-<div id="hd"><div id="bk"></div><div id="vc"></div><div id="av" style="font-family:Inter,sans-serif;font-size:44px;font-weight:500;letter-spacing:0;line-height:124px;background:linear-gradient(160deg,#a9a49b,#7d786f)">{_h.escape(avatar)}</div><div id="nm">{_h.escape(contact)}<i></i></div></div>
+<div id="hd"><div id="bk"></div><div id="vc"></div><div id="av" style="{AVS}">{_h.escape(avatar)}</div><div id="nm">{_h.escape(contact)}<i></i></div></div>
 <div id="sb"><div id="tm">{_h.escape(clock_time)}</div><div id="isl"></div><div id="ic">
 <svg width="38" height="26" viewBox="0 0 38 26"><rect x="0" y="17" width="6" height="9" rx="1.5"/><rect x="10" y="12" width="6" height="14" rx="1.5"/><rect x="20" y="6" width="6" height="20" rx="1.5"/><rect x="30" y="0" width="6" height="26" rx="1.5"/></svg>
 <svg width="36" height="26" viewBox="0 0 36 26"><path d="M2 9 A23 23 0 0 1 34 9" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><path d="M9 16 A13 13 0 0 1 27 16" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><circle cx="18" cy="22.5" r="3.5"/></svg>
