@@ -1,4 +1,4 @@
-"""Kato video renderer. python3 anim.py <name|all> <outdir>
+"""Kato video renderer. python3 anim.py <name[,name...]|all> <outdir> [preview]
 Writes kato_<name>.mp4 (1080x1920, 30fps, with original synthesized audio), <name>_cover.jpg and <name>_fallback.jpg (4:5 still).
 Built-in: steps, golf, timeback, reconcile, intro (the launch video; its sound is unique to it, do not reuse). Add word-by-word text videos in anims.json (see stagger_anim)."""
 import asyncio, sys, pathlib, subprocess, wave, json, numpy as np
@@ -263,11 +263,66 @@ window.render=t=>{{const bl=document.querySelector('.blur'); if(bl){{bl.style.se
  $('#s').style.opacity=ease(seg(t,{ts},.8));}};}}</script>"""
     n=len(words); ev=[(T[i],min(i,5)) for i in range(n)]+([(ts,5)] if sub else [])
     return dict(dur=ts+2.6,events=ev,html=h,music=music)
-# extra text videos can be declared in anims.json: {"name": {"words":[...],"theme":"wash","sub":"","step":130,"size":190,"music":"calm"}}
+def _auto_sound(name):
+    """A distinct sound for every video, generated from its name: its own key, instrument, chord movement and pace.
+    The music keeps its own time and never plays a note per on-screen step. All synthesized here, nothing licensed."""
+    import hashlib
+    seed=int(hashlib.sha256(name.encode()).hexdigest()[:8],16)
+    def fn(dur,path):
+        rng=np.random.default_rng(seed); y=np.zeros(int(dur*SR))
+        root=[65.41,73.42,82.41,87.31,98.0,110.0,123.47][seed%7]*(2 if rng.random()<.35 else 1)
+        shapes=[[1,1.5,2,2.5,3],[1,1.498,2,2.378,2.997],[1,1.335,2,2.52,3.0],[1,1.5,2.245,2.52,3.364],[1,1.26,1.498,1.888,2.52]]
+        moves=[[0,5,-2,0],[0,-4,3,0],[0,7,5,0],[0,-5,-2,-7],[0,3,-2,0],[0,5,7,5]]
+        mv=moves[int(rng.integers(len(moves)))]; sh=shapes[int(rng.integers(len(shapes)))]
+        style=(seed>>3)%6; gap=float(rng.uniform(1.5,2.3)); at=float(rng.uniform(.2,.5)); i=0
+        while at<dur-1.2:
+            base=root*2**(mv[i%len(mv)]/12); notes=[base*r for r in sh]
+            if style==0:                                    # strummed strings
+                for j,f in enumerate(notes): _add(y,_ks(f*2,2.8,.9972,seed=seed%97+i*7+j),at+.04*j,.5)
+            elif style==1:                                  # electric piano
+                for j,f in enumerate(notes):
+                    tt=np.arange(int(2.6*SR))/SR
+                    _add(y,(np.sin(2*np.pi*f*2*tt)+.35*np.sin(4*np.pi*f*2*tt)*np.exp(-tt*2.5))*(1+.07*np.sin(2*np.pi*4.5*tt))*np.exp(-tt*1.0)*np.minimum(1,tt/.03),at+.02*j,.36)
+            elif style==2:                                  # slow pad with a single high bell
+                _add(y,_pad([n for n in notes[:4]],gap+1.6,att=.9,dec=.35),at,.5)
+                _add(y,_tn(notes[int(rng.integers(2,5))]*4,2.2,2.4,att=.003,h2=.2),at+gap*.5,.22)
+            elif style==3:                                  # soft marimba figure
+                for j in rng.permutation(len(notes))[:4]:
+                    tt=np.arange(int(1.2*SR))/SR; f=notes[int(j)]*4
+                    _add(y,(np.sin(2*np.pi*f*tt)+.5*np.sin(8*np.pi*f*tt)*np.exp(-tt*18))*np.exp(-tt*6)*np.minimum(1,tt/.004),at+float(rng.uniform(0,gap*.8)),.42)
+                _add(y,_pad(notes[:2],gap+1,att=.6,dec=.5),at,.3)
+            elif style==4:                                  # low pulse under plucked harmonics
+                for q in range(2): _add(y,_tn(base,.6,6,att=.012),at+q*gap/2,.5)
+                for j,f in enumerate(notes[2:]): _add(y,_ks(f*4,2.0,.996,seed=seed%89+i*5+j),at+.3+.22*j,.3)
+            else:                                           # reversed swell into a chord
+                ch=np.zeros(int(gap*SR))
+                for j,f in enumerate(notes): _add(ch,_ks(f*2,gap,.9975,seed=seed%83+i*3+j),.02*j,.5)
+                _add(y,ch[::-1].copy(),at,.55); _add(y,_pad(notes[:3],1.8,att=.2,dec=.9),at+gap,.3)
+            at+=gap; i+=1
+        _add(y,_pad([root,root*1.5],dur-.4,att=1.8,dec=.1),0.1,.14)
+        _finish(y,dur,path,room=((.11+.01*(seed%5),.3),(.26,.21),(.43,.14)))
+    return fn
+# Videos are declared in anims.json. "kind" picks the format: "stagger" (word by word, the default) or one from kinds.py
+# (chat, todo, clock, match, define, bars, typed). Every other key is passed to that format. "sound" names a _snd_* function;
+# leave it out and the video gets its own generated sound.
+import kinds as _kinds
 if pathlib.Path(__file__).with_name("anims.json").exists():
     for k,v in json.loads(pathlib.Path(__file__).with_name("anims.json").read_text()).items():
-        fn=v.pop("sound",None); ANIMS[k]=stagger_anim(**v)
-        if fn: ANIMS[k]["audio_fn"]=globals()[fn]
+        fn=v.pop("sound",None); kind=v.pop("kind","stagger")
+        ANIMS[k]=stagger_anim(**v) if kind=="stagger" else _kinds.build(kind,BASE,v)
+        if fn and fn!="auto": ANIMS[k]["audio_fn"]=globals()[fn]
+        elif fn=="auto" or kind!="stagger": ANIMS[k]["audio_fn"]=_auto_sound(k)
+async def preview(names,out):
+    """Three stills per video (40%, 75% and the last frame) for checking layout before a full render."""
+    out=pathlib.Path(out); out.mkdir(exist_ok=True,parents=True)
+    async with async_playwright() as p:
+        br=await p.chromium.launch(executable_path="/usr/bin/google-chrome",args=["--no-sandbox"])
+        pg=await br.new_page(viewport={"width":W,"height":H})
+        for nm in names:
+            a=ANIMS[nm]; await pg.set_content(a["html"]); await pg.evaluate("document.fonts.ready")
+            for j,u in enumerate((.4,.75,1)):
+                await pg.evaluate(f"render({min(a['dur']*u,a['dur']-1/FPS)})"); await pg.screenshot(path=str(out/f"{nm}_p{j}.jpg"),type="jpeg",quality=80)
+        await br.close()
 async def run(names,out):
     out=pathlib.Path(out); out.mkdir(exist_ok=True,parents=True)
     async with async_playwright() as p:
@@ -288,5 +343,5 @@ async def run(names,out):
             c=a.get("crop",285); Image.open(last).crop((0,c,1080,c+1350)).save(out/f"{nm}_fallback.jpg",quality=92)  # 4:5 still
             shutil.rmtree(fd); (out/f"{nm}.wav").unlink(); print(nm,nf); await pg.close()
         await br.close()
-names=list(ANIMS) if sys.argv[1]=="all" else [sys.argv[1]]
-asyncio.run(run(names,sys.argv[2]))
+names=list(ANIMS) if sys.argv[1]=="all" else sys.argv[1].split(",")
+asyncio.run(preview(names,sys.argv[2]) if len(sys.argv)>3 and sys.argv[3]=="preview" else run(names,sys.argv[2]))

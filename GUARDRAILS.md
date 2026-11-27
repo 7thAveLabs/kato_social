@@ -13,25 +13,33 @@ Every post and caption must pass all of these. If a draft cannot, drop it and wr
 9. All text on images is set in the serif (headline) font, except inside product UI cards. Captions: one to three short sentences, plain and calm, no emoji. Open with the point, because the first line is what shows in the feed. Use the words a dentist or office manager would type into search (dental billing, payment posting, EOB, ERA, dental practice) naturally in the sentences. Three to five specific hashtags at the end, never more than five; they label the topic and do not add reach. Push them out of sight: after the caption text, add five lines that each contain only a period, then the hashtags on the last line (caption text + "\n.\n.\n.\n.\n.\n" + hashtags). On education carousels, add one line inviting a share, such as "Send this to whoever handles payment posting at your practice." Shares to a friend are the strongest signal for reaching people who do not follow us.
 10. Golf is an occasional campaign theme (at most one post a week), not the identity.
 
-## Rotation (per 7 days)
-- 2 to 3 videos (see below), never on consecutive days
-- 2 to 3 benefit-line stills (staggered type or headline on `wash`, `blur`, `bone`, or `dark`; at most one golf theme)
-- 1 to 2 education carousels (4 to 5 slides, one billing concept each)
-- at most 1 product card still
-Do not repeat a headline used in the previous 4 weeks (check `posts/` and `queue.json`).
+## Who we are talking to (founder direction, Nov 26, 2026)
+Office managers and clinic owners. Every post is about a moment they recognize or about getting time back: the stack of EOBs, the deposit that does not match, month-end, the question nobody can answer without an afternoon of checking. Write the first line for the office manager who would forward it to the dentist, or the dentist who would forward it to the office manager.
+
+## Daily schedule: 3 posts a day on Instagram and Facebook, 1 on LinkedIn
+- Slot 1 (morning): the main post. Any type. Goes to Instagram, Facebook and the LinkedIn company page.
+- Slot 2 (midday) and slot 3 (evening): Instagram and Facebook only. Reels by default; about one in seven is an education carousel.
+- Never two posts in the same format on the same day (for example two definition Reels, or two message threads).
+- Slot 1 rotation per 7 days: 2 to 3 videos, 2 to 3 stills or photo posts, 1 to 2 education carousels, at most 1 statistic.
+- Do not repeat a headline or opening line used in the previous 4 weeks (check `posts/`, `anims.json` and `queue.json`). At most one golf theme a week.
 
 ## Videos
-- New text videos: add an entry to `anims.json` (word-by-word headline, 3 to 5 short lines) and render with `python3 anim.py <name> <outdir>`.
-- The built-in videos (`steps`, `golf`, `timeback`, `reconcile`) may be reused, but not within 4 weeks of their last use.
-- Sound: every video gets its own sound, designed around what happens in it (see the `_snd_*` functions in `anim.py`). No chime-per-step patterns and no sound that rises with each movement. For a new text video, write a new `_snd_*` function and name it in the `sound` field in `anims.json`; do not reuse another video's sound within 4 weeks. Audio is synthesized by `anim.py`; never add third-party music.
+- Declare each video in `anims.json` and render with `python3 anim.py <name> <outdir>`. Check layout first with `python3 anim.py <name> <outdir> preview` and look at the three stills.
+- Formats (`kind`): `chat` (message thread ending with Kato's reply), `todo` (a list that gets crossed off), `clock` (hands wind back), `match` (remittance against deposit, sample data), `define` (a billing term, defined), `bars` (a day re-divided), `typed` (a question, typed out and answered), and `stagger` (word by word). The built-in videos (`steps`, `golf`, `timeback`, `reconcile`) may be reused, but not within 4 weeks. New formats are welcome: add a builder to `kinds.py`.
+- Use every format before repeating one, and do not use the same format twice in 3 days.
+- Start with the hook: the first thing on screen is the recognizable moment or the question, not the brand line. Keep videos 7 to 11 seconds.
+- Keep everything that matters between y=250 and y=1560; Reels cover the top and bottom of the frame.
+- Illustrations of time (`clock`, `bars`) never show a number of hours or a percentage. They are pictures of the idea, not results.
+- Sound: every video has its own sound. Videos from `kinds.py` get one generated from their name (`_auto_sound` in `anim.py`), which keeps its own pace and never plays a note per on-screen step. A hand-written `_snd_*` function can be named in the `sound` field instead. Audio is synthesized by `anim.py`; never add third-party music.
 - Every video entry needs a cover and a 4:5 fallback still (both written by `anim.py`).
+- Voiceover videos: when a founder supplies a recorded voiceover, it replaces the generated sound and its script is shown as on-screen text, because most viewers watch with sound off.
 
 ## What Instagram rewards (reviewed Nov 2026)
-- Watch time, sends (shares by DM), and likes are the signals Instagram says matter most. Keep videos short (7 to 10 seconds) so they are watched to the end and loop.
-- Reels reach people who do not follow us; carousels and stills mostly reach followers. Keep at least 4 videos in every 14 days.
+- Watch time, sends (shares by DM), and likes are the signals Instagram says matter most. Keep videos short (7 to 11 seconds) so they are watched to the end and loop.
+- Reels reach people who do not follow us; carousels and stills mostly reach followers. In the first 10 days, Reels averaged 323 views on Instagram, the one carousel 225, and stills 67.
 - Make education posts worth forwarding to a colleague. That is the test for a carousel.
 
 ## Photo posts
 - Use only photos in `photos/` (see `photos/CREDITS.md`). In a slide, set `"photo": "<file name without .jpg>"`; render.py applies the filter and white serif text.
 - A label is a short staggered line; a statistic uses `stat`, `sub` and `source`.
-- At most 3 photo or statistic posts per 7 days, and do not reuse a photo within 4 weeks.
+- At most 3 photo or statistic posts per 7 days, and do not reuse a photo within 3 weeks.

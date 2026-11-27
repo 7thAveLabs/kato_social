@@ -12,5 +12,207 @@
   "size": 132,
   "music": "swell",
   "sound": "_snd_better"
+ },
+ "fri_list": {
+  "kind": "todo",
+  "title": "Friday, 4:45 pm",
+  "items": [
+   "Go through the EOBs",
+   "Match them to deposits",
+   "Post every payment",
+   "Find the missing one"
+  ],
+  "end": "Or just\n*go home.*",
+  "sub": "Kato handles payment posting and reconciliation.",
+  "theme": "wash"
+ },
+ "did_it_post": {
+  "kind": "chat",
+  "title": "Front desk",
+  "msgs": [
+   [
+    "l",
+    "Did Tuesday's payer payment ever hit the bank?"
+   ],
+   [
+    "r",
+    "No idea. Can you check?"
+   ],
+   [
+    "l",
+    "After this stack of EOBs."
+   ],
+   [
+    "k",
+    "Deposit verified. Payments posted. One flagged for you."
+   ]
+  ],
+  "end": "Nobody has to\n*go check.*",
+  "theme": "bone"
+ },
+ "take_it_back": {
+  "kind": "clock",
+  "top": "The evening that goes to\nposting payments.",
+  "end": "Take it *back.*",
+  "frm": 1180,
+  "to": 1020,
+  "theme": "dusk",
+  "sub": "We take care of the billing."
+ },
+ "era": {
+  "kind": "define",
+  "term": "ERA",
+  "pos": "noun, dental billing",
+  "lines": [
+   "Electronic remittance advice.",
+   "The payer's note saying what it paid, and why.",
+   "It is *not* the money."
+  ],
+  "end": "The deposit is the money. Kato checks both.",
+  "theme": "wash"
+ },
+ "three_checks": {
+  "kind": "match",
+  "head": "What the payer said.\n*What the bank got.*",
+  "pairs": [
+   [
+    "$1,240.00",
+    "$1,240.00",
+    true
+   ],
+   [
+    "$386.50",
+    "$386.50",
+    true
+   ],
+   [
+    "$912.00",
+    "No deposit yet",
+    false
+   ]
+  ],
+  "end": "Two reconciled. One flagged.\n*Zero guesses.*",
+  "theme": "page"
+ },
+ "why_no_match": {
+  "kind": "typed",
+  "q": "Why doesn't the deposit match the EOB?",
+  "a": [
+   "Bulk payments. Adjustments. A payment that never arrived.",
+   "Someone has to find out which."
+  ],
+  "end": "Kato does the *finding.*",
+  "theme": "ink"
+ },
+ "office_afternoon": {
+  "kind": "bars",
+  "title": "An office manager's\n*afternoon.*",
+  "segs": [
+   [
+    "Patients at the desk",
+    0.28,
+    0.4
+   ],
+   [
+    "Phones",
+    0.2,
+    0.28
+   ],
+   [
+    "Tomorrow's schedule",
+    0.2,
+    0.32
+   ],
+   [
+    "Payment posting",
+    0.32,
+    0
+   ]
+  ],
+  "end": "One block, *handled.*",
+  "theme": "bone"
+ },
+ "owner_asks": {
+  "kind": "chat",
+  "title": "Sunday, 9:12 pm",
+  "msgs": [
+   [
+    "r",
+    "Are we caught up on payer payments?"
+   ],
+   [
+    "l",
+    "Mostly. Two deposits I can't match yet."
+   ],
+   [
+    "r",
+    "Which ones?"
+   ],
+   [
+    "k",
+    "Both flagged. Everything else is posted."
+   ]
+  ],
+  "end": "Know *before*\nyou ask.",
+  "theme": "dusk"
+ },
+ "reconciled": {
+  "kind": "define",
+  "term": "Reconciled",
+  "pos": "adjective, dental billing",
+  "lines": [
+   "The remittance, the bank deposit and the ledger all agree.",
+   "Not two out of three."
+  ],
+  "end": "Kato never marks it reconciled on a guess.",
+  "theme": "bone",
+  "size": 168
+ },
+ "month_end": {
+  "kind": "todo",
+  "title": "Month-end close",
+  "items": [
+   "Find unposted payments",
+   "Match the deposits",
+   "Fix the ledger",
+   "Explain the difference"
+  ],
+  "end": "Month-end,\n*minus the hunt.*",
+  "sub": "Kato handles payment posting and reconciliation.",
+  "theme": "page"
+ },
+ "who_posts": {
+  "kind": "typed",
+  "q": "Who posts payments when the office manager is out?",
+  "a": [
+   "Usually, it waits.",
+   "So does the reconciliation."
+  ],
+  "end": "With Kato, it *doesn't wait.*",
+  "theme": "dusk",
+  "size": 96
+ },
+ "bulk_payment": {
+  "kind": "define",
+  "term": "Bulk payment",
+  "pos": "noun, dental billing",
+  "lines": [
+   "One deposit from a payer that covers many patients' claims.",
+   "Someone has to split it across every ledger."
+  ],
+  "end": "Kato posts each payment where it belongs.",
+  "theme": "ink",
+  "size": 142
+ },
+ "says_paid": {
+  "kind": "typed",
+  "q": "The EOB says paid. Is it?",
+  "a": [
+   "Not until it lands in the bank.",
+   "Remittance first. Deposit second. Sometimes never."
+  ],
+  "end": "Kato checks the *bank.*",
+  "theme": "wash",
+  "size": 120
  }
 }

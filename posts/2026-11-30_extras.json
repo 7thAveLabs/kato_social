@@ -1,0 +1,15 @@
+[
+ {
+  "id": "2026-11-30_eob_or_era",
+  "date": "2026-11-30",
+  "pillar": "Education carousel",
+  "caption": "EOB or ERA? Same payment, two formats, and neither one is the money.\n\nKato checks the remittance against the bank deposit before anything is called reconciled.\n\nSend this to whoever handles payment posting at your practice.\n\n#dentalbilling #dentalofficemanager #paymentposting",
+  "slides": [
+   {"headline": "EOB or\n*ERA?*", "sub": "Same payment. Two formats."},
+   {"num": "1", "headline": "An EOB is the document: what the payer paid, adjusted and denied, *claim by claim.*", "size": "s"},
+   {"num": "2", "headline": "An ERA is the same information as a file *your software can read.*", "size": "s"},
+   {"num": "3", "headline": "Neither one is *the money.* The bank deposit is.", "size": "s"},
+   {"theme": "dark", "headline": "Kato checks\n*all of it.*", "size": "m", "sub": "Remittance against deposit, before anything is called reconciled."}
+  ]
+ }
+]

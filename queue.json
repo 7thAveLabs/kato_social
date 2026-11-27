@@ -12,7 +12,13 @@
   "status": "posted",
   "media_id": "18101625392451835",
   "posted_at": "2026-11-17T08:38:15-06:00",
-  "post_time": "08:37"
+  "post_time": "08:37",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-18",
@@ -26,7 +32,13 @@
   "status": "posted",
   "media_id": "18135796447704242",
   "posted_at": "2026-11-18T08:33:31-06:00",
-  "post_time": "08:33"
+  "post_time": "08:33",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-19",
@@ -43,7 +55,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-19T08:34:00-06:00",
-  "post_time": "08:34"
+  "post_time": "08:34",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-20",
@@ -58,7 +76,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-20T07:15:00-06:00",
-  "post_time": "07:15"
+  "post_time": "07:15",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-21",
@@ -72,7 +96,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-21T07:41:00-06:00",
-  "post_time": "07:41"
+  "post_time": "07:41",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-22",
@@ -86,7 +116,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-22T07:20:00-06:00",
-  "post_time": "07:20"
+  "post_time": "07:20",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-23",
@@ -101,7 +137,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-23T07:24:00-06:00",
-  "post_time": "07:24"
+  "post_time": "07:24",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-24",
@@ -115,7 +157,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-24T07:25:00-06:00",
-  "post_time": "07:25"
+  "post_time": "07:25",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-25",
@@ -129,7 +177,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-25T07:19:00-06:00",
-  "post_time": "07:19"
+  "post_time": "07:19",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-26",
@@ -144,7 +198,13 @@
   "status": "posted",
   "media_id": null,
   "posted_at": "2026-11-26T08:27:00-06:00",
-  "post_time": "08:27"
+  "post_time": "08:27",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-11-27",
@@ -158,7 +218,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:19"
+  "post_time": "08:19",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-11-27",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-27_fri_list",
+  "pillar": "Reel: to-do list",
+  "type": "video",
+  "animation": "fri_list",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-27_fri_list.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-27_fri_list_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-27_fri_list_fallback.jpg",
+  "caption": "The Friday list nobody wants: go through the EOBs, match them to deposits, post every payment, find the missing one.\n\nKato handles payment posting and reconciliation, so the list is done before you look at it.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalbilling #paymentposting",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:09"
+ },
+ {
+  "date": "2026-11-27",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-27_did_it_post",
+  "pillar": "Reel: message thread",
+  "type": "video",
+  "animation": "did_it_post",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-27_did_it_post.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-27_did_it_post_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-27_did_it_post_fallback.jpg",
+  "caption": "\"Did that payer payment ever hit the bank?\" should not need an afternoon to answer.\n\nKato verifies the deposit, posts the payments and flags the one that does not match.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalpractice #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "18:55"
  },
  {
   "date": "2026-11-28",
@@ -172,7 +278,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "07:16"
+  "post_time": "07:16",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-11-28",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-28_take_it_back",
+  "pillar": "Reel: clock",
+  "type": "video",
+  "animation": "take_it_back",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-28_take_it_back.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-28_take_it_back_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_take_it_back_fallback.jpg",
+  "caption": "Payment posting has a way of taking the evening.\n\nTake it back. Kato handles payment posting and reconciliation for dental practices.\n.\n.\n.\n.\n.\n#practiceowner #dentist #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:38"
+ },
+ {
+  "date": "2026-11-28",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-28_era",
+  "pillar": "Reel: definition",
+  "type": "video",
+  "animation": "era",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-28_era.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-28_era_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-28_era_fallback.jpg",
+  "caption": "ERA, defined: electronic remittance advice. The payer's note saying what it paid and why. It is not the money.\n\nThe deposit is the money, and Kato checks one against the other.\n.\n.\n.\n.\n.\n#dentalbilling #dentalofficemanager #paymentposting",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "19:24"
  },
  {
   "date": "2026-11-29",
@@ -190,7 +342,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "07:38"
+  "post_time": "07:38",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-11-29",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-29_three_checks",
+  "pillar": "Reel: matching",
+  "type": "video",
+  "animation": "three_checks",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_three_checks.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_three_checks_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-29_three_checks_fallback.jpg",
+  "caption": "What the payer said and what the bank got are two different records.\n\nKato matches them, posts what agrees and flags what does not. Nothing is reconciled on a guess.\n\nExample shown with sample data.\n.\n.\n.\n.\n.\n#dentalbilling #reconciliation #dentalofficemanager",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:43"
+ },
+ {
+  "date": "2026-11-29",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-29_why_no_match",
+  "pillar": "Reel: question",
+  "type": "video",
+  "animation": "why_no_match",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_why_no_match.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-29_why_no_match_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-29_why_no_match_fallback.jpg",
+  "caption": "Why doesn't the deposit match the EOB? Bulk payments, adjustments, or a payment that never arrived.\n\nSomeone has to find out which. Kato does the finding.\n.\n.\n.\n.\n.\n#dentalbilling #dentalofficemanager #dentalpractice",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "18:49"
  },
  {
   "date": "2026-11-30",
@@ -205,7 +403,56 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "07:53"
+  "post_time": "07:53",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-11-30",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-30_office_afternoon",
+  "pillar": "Reel: day blocks",
+  "type": "video",
+  "animation": "office_afternoon",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-30_office_afternoon.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-30_office_afternoon_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_office_afternoon_fallback.jpg",
+  "caption": "An office manager's afternoon has patients, phones, tomorrow's schedule and payment posting in it.\n\nKato takes the payment posting and reconciliation, so the rest gets the room.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalpractice #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:23"
+ },
+ {
+  "date": "2026-11-30",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-11-30_eob_or_era",
+  "pillar": "Education carousel",
+  "type": "carousel",
+  "images": [
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_eob_or_era_1.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_eob_or_era_2.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_eob_or_era_3.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_eob_or_era_4.jpg",
+   "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-30_eob_or_era_5.jpg"
+  ],
+  "caption": "EOB or ERA? Same payment, two formats, and neither one is the money.\n\nKato checks the remittance against the bank deposit before anything is called reconciled.\n\nSend this to whoever handles payment posting at your practice.\n.\n.\n.\n.\n.\n#dentalbilling #dentalofficemanager #paymentposting",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "19:21"
  },
  {
   "date": "2026-12-01",
@@ -219,7 +466,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "07:27"
+  "post_time": "07:27",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-12-01",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-01_owner_asks",
+  "pillar": "Reel: message thread",
+  "type": "video",
+  "animation": "owner_asks",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_owner_asks.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_owner_asks_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-01_owner_asks_fallback.jpg",
+  "caption": "\"Are we caught up on payer payments?\" is a hard question to answer on a Sunday night.\n\nKato posts what matches and flags what does not, so you know before you ask.\n.\n.\n.\n.\n.\n#practiceowner #dentalpractice #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:26"
+ },
+ {
+  "date": "2026-12-01",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-01_reconciled",
+  "pillar": "Reel: definition",
+  "type": "video",
+  "animation": "reconciled",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_reconciled.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-01_reconciled_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-01_reconciled_fallback.jpg",
+  "caption": "Reconciled, defined: the remittance, the bank deposit and the ledger all agree. Not two out of three.\n\nKato never marks a payment reconciled on a guess.\n.\n.\n.\n.\n.\n#dentalbilling #reconciliation #dentalofficemanager",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "18:16"
  },
  {
   "date": "2026-12-02",
@@ -233,7 +526,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:18"
+  "post_time": "08:18",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-12-02",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-02_month_end",
+  "pillar": "Reel: to-do list",
+  "type": "video",
+  "animation": "month_end",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-02_month_end.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-02_month_end_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-02_month_end_fallback.jpg",
+  "caption": "Month-end close is mostly a hunt: unposted payments, unmatched deposits, a ledger that is off.\n\nKato handles payment posting and reconciliation, so there is less to hunt for.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalbilling #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:55"
+ },
+ {
+  "date": "2026-12-02",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-02_who_posts",
+  "pillar": "Reel: question",
+  "type": "video",
+  "animation": "who_posts",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-02_who_posts.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-02_who_posts_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-02_who_posts_fallback.jpg",
+  "caption": "Who posts payments when the office manager is out? Usually, it waits. So does the reconciliation.\n\nWith Kato, it does not wait on anyone's calendar.\n.\n.\n.\n.\n.\n#practiceowner #dentalofficemanager #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "18:10"
  },
  {
   "date": "2026-12-03",
@@ -250,7 +589,53 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:25"
+  "post_time": "08:25",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
+ },
+ {
+  "date": "2026-12-03",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-03_bulk_payment",
+  "pillar": "Reel: definition",
+  "type": "video",
+  "animation": "bulk_payment",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-03_bulk_payment.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-03_bulk_payment_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-03_bulk_payment_fallback.jpg",
+  "caption": "Bulk payment, defined: one deposit from a payer that covers many patients' claims. Someone has to split it across every ledger.\n\nKato posts each payment where it belongs.\n.\n.\n.\n.\n.\n#dentalbilling #paymentposting #dentalofficemanager",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:39"
+ },
+ {
+  "date": "2026-12-03",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-03_says_paid",
+  "pillar": "Reel: question",
+  "type": "video",
+  "animation": "says_paid",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-03_says_paid.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-03_says_paid_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-03_says_paid_fallback.jpg",
+  "caption": "The EOB says paid. It is not paid until the money lands in the bank.\n\nKato checks the remittance against the deposit before anything is called reconciled.\n.\n.\n.\n.\n.\n#dentalbilling #dentalpractice #dentalofficemanager",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "17:51"
  },
  {
   "date": "2026-12-04",
@@ -264,7 +649,13 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "07:34"
+  "post_time": "07:34",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-12-05",
@@ -279,7 +670,13 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:16"
+  "post_time": "08:16",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-12-06",
@@ -293,7 +690,13 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:41"
+  "post_time": "08:41",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-12-07",
@@ -307,7 +710,13 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:46"
+  "post_time": "08:46",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  },
  {
   "date": "2026-12-08",
@@ -321,6 +730,12 @@
   "status": "queued",
   "media_id": null,
   "posted_at": null,
-  "post_time": "08:39"
+  "post_time": "08:39",
+  "slot": 1,
+  "networks": [
+   "instagram",
+   "facebook",
+   "linkedin"
+  ]
  }
 ]
