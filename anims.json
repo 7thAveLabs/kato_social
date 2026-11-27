@@ -215,8 +215,10 @@
   "theme": "wash",
   "size": 120
  },
- "text_kato": {
+ "caught_up": {
   "kind": "phone",
+  "contact": "Front desk",
+  "avatar": "FD",
   "msgs": [
    [
     "u",
@@ -224,7 +226,7 @@
    ],
    [
     "k",
-    "Yes. 14 payments posted this week, every deposit verified."
+    "Yes. Kato posted 14 this week and verified every deposit."
    ],
    [
     "u",
@@ -232,16 +234,15 @@
    ],
    [
     "k",
-    "One. A $912.00 remittance with no deposit yet. Flagged, and I'm watching the bank."
+    "One. A $912.00 remittance with no deposit yet. Kato flagged it this morning."
    ],
    [
     "u",
     "Thanks."
    ]
   ],
-  "end": "Soon, just\n*text* Kato.",
-  "sub": "Ask about your payments the way you'd ask a person.",
-  "note": "",
+  "end": "Know *before*\nyou ask.",
+  "sub": "Kato handles payment posting and reconciliation.",
   "clock_time": "9:12",
   "theme": "ink"
  }

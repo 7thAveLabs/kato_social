@@ -215,10 +215,11 @@ window.render=t=>{{
 }};}}</script>"""
     return dict(dur=te + 2.8, html=h, events=[])
 
-def phone(BASE, msgs, end, sub="", contact="Kato", clock_time="9:12", stamp="Today 9:12 PM", theme="ink", note=""):
-    """A text-message thread on a phone, with Kato as the contact. msgs: [["u"|"k", text], ...] (4 or 5, user first).
-    Kato's own messaging screen design: no platform names, logos or brand marks. Sample figures only, and never a patient name.
-    `note` is a small line under the end headline (for example to say a capability is not live yet)."""
+def phone(BASE, msgs, end, sub="", contact="Front desk", avatar="FD", clock_time="9:12", stamp="Today 9:12 PM", theme="ink", note=""):
+    """A text-message thread on a phone between two people at a practice (for example the owner and the front desk).
+    msgs: [["u"|"k", text], ...] (4 or 5): "u" is the phone's owner (right), "k" is the contact replying (left). The replies say what Kato has already done.
+    The contact is a person or role, never Kato: Kato does not answer texts today. `avatar` is the contact's initials.
+    Kato's own messaging screen design: no platform names, logos or brand marks. Sample figures only, and never a patient name."""
     T=[]; t=0.35
     for side,_ in msgs:
         t += 1.9 if side=="k" else 1.2
@@ -259,13 +260,13 @@ def phone(BASE, msgs, end, sub="", contact="Kato", clock_time="9:12", stamp="Tod
 </style>
 <div class="p stage"><div class="mark">kato.</div>
 <div id="persp"><div id="ph"><div id="sc">
-<div id="hd"><div id="bk"></div><div id="vc"></div><div id="av">k.</div><div id="nm">{_h.escape(contact)}<i></i></div></div>
+<div id="hd"><div id="bk"></div><div id="vc"></div><div id="av" style="font-family:Inter,sans-serif;font-size:44px;font-weight:500;letter-spacing:0;line-height:124px;background:linear-gradient(160deg,#a9a49b,#7d786f)">{_h.escape(avatar)}</div><div id="nm">{_h.escape(contact)}<i></i></div></div>
 <div id="sb"><div id="tm">{_h.escape(clock_time)}</div><div id="isl"></div><div id="ic">
 <svg width="38" height="26" viewBox="0 0 38 26"><rect x="0" y="17" width="6" height="9" rx="1.5"/><rect x="10" y="12" width="6" height="14" rx="1.5"/><rect x="20" y="6" width="6" height="20" rx="1.5"/><rect x="30" y="0" width="6" height="26" rx="1.5"/></svg>
 <svg width="36" height="26" viewBox="0 0 36 26"><path d="M2 9 A23 23 0 0 1 34 9" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><path d="M9 16 A13 13 0 0 1 27 16" fill="none" stroke="#111" stroke-width="4.5" stroke-linecap="round"/><circle cx="18" cy="22.5" r="3.5"/></svg>
 <svg width="56" height="26" viewBox="0 0 56 26"><rect x="1.5" y="1.5" width="46" height="23" rx="7.5" fill="none" stroke="#111" stroke-opacity=".4" stroke-width="2.5"/><rect x="5" y="5" width="34" height="16" rx="4.5"/><rect x="50.5" y="8.5" width="4" height="9" rx="2" fill-opacity=".4"/></svg></div></div>
 <div id="vp"><div id="th"><div id="sp">{_h.escape(stamp)}</div>{rows}</div><div id="ty"><i></i><i></i><i></i></div></div>
-<div id="ip"><div id="pl"></div><div id="fd">Message Kato</div></div><div id="hb"></div><div id="gl"></div>
+<div id="ip"><div id="pl"></div><div id="fd">Message</div></div><div id="hb"></div><div id="gl"></div>
 </div></div></div>
 <div class="end" id="end" style="top:600px;font-size:150px;line-height:.98">{_e(end)}</div>
 <div class="sub" id="sub" style="top:1170px;font-size:60px;color:#d8d1c3">{_e(sub)}</div>
