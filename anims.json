@@ -276,5 +276,52 @@
   "sub": "Ask about your payments the way you'd ask a person.",
   "clock_time": "9:12",
   "theme": "ink"
+ },
+ "deposits_match": {
+  "kind": "match",
+  "head": "Three payer deposits.\n*Do they all match?*",
+  "pairs": [
+   [
+    "$2,118.40",
+    "$2,118.40",
+    true
+   ],
+   [
+    "$540.00",
+    "$540.00",
+    true
+   ],
+   [
+    "$1,376.25",
+    "$1,276.25",
+    false
+   ]
+  ],
+  "end": "Two match. One came in short.\n*Flagged for you.*",
+  "theme": "wash"
+ },
+ "eobs_posted": {
+  "kind": "chat",
+  "title": "Office manager",
+  "msgs": [
+   [
+    "l",
+    "Heading out. Did today's EOBs get posted?"
+   ],
+   [
+    "r",
+    "Not yet. I was at the desk all day."
+   ],
+   [
+    "l",
+    "So tonight, then?"
+   ],
+   [
+    "k",
+    "Already posted. Deposits verified. Nothing waiting."
+   ]
+  ],
+  "end": "Tonight is\n*yours.*",
+  "theme": "dusk"
  }
 }

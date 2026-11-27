@@ -215,9 +215,9 @@
    "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-27_fridays.jpg"
   ],
   "caption": "The week's payments, posted and reconciled without you.\n\nGo home.\n.\n.\n.\n.\n.\n#dentist #practiceowner #dentalbilling",
-  "status": "queued",
+  "status": "posted",
   "media_id": null,
-  "posted_at": null,
+  "posted_at": "2026-11-27T09:19:00-05:00",
   "post_time": "08:19",
   "slot": 1,
   "networks": [
@@ -241,9 +241,9 @@
   "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-11-27_fri_list_cover.jpg",
   "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-11-27_fri_list_fallback.jpg",
   "caption": "The Friday list nobody wants: go through the EOBs, match them to deposits, post every payment, find the missing one.\n\nKato handles payment posting and reconciliation, so the list is done before you look at it.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalbilling #paymentposting",
-  "status": "queued",
+  "status": "posted",
   "media_id": null,
-  "posted_at": null,
+  "posted_at": "2026-11-27T12:09:00-05:00",
   "post_time": "11:09"
  },
  {
@@ -656,6 +656,46 @@
    "facebook",
    "linkedin"
   ]
+ },
+ {
+  "date": "2026-12-04",
+  "slot": 2,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-04_deposits_match",
+  "pillar": "Reel: match",
+  "type": "video",
+  "animation": "deposits_match",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-04_deposits_match.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-04_deposits_match_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-04_deposits_match_fallback.jpg",
+  "caption": "Three payer deposits, three remittances. Do they all match? Kato checks each remittance against the bank deposit, posts the payments and flags the one that came in short.\n\nExample shown with sample data.\n.\n.\n.\n.\n.\n#dentalofficemanager #paymentposting #dentalbilling",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "11:15"
+ },
+ {
+  "date": "2026-12-04",
+  "slot": 3,
+  "networks": [
+   "instagram",
+   "facebook"
+  ],
+  "id": "2026-12-04_eobs_posted",
+  "pillar": "Reel: thread",
+  "type": "video",
+  "animation": "eobs_posted",
+  "video": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-04_eobs_posted.mp4",
+  "cover": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/videos/2026-12-04_eobs_posted_cover.jpg",
+  "fallback_image": "https://raw.githubusercontent.com/7thAveLabs/kato_social/main/images/2026-12-04_eobs_posted_fallback.jpg",
+  "caption": "\"Did today's EOBs get posted?\" is a hard question to hear on the way out the door.\n\nKato handles payment posting and reconciliation for your dental practice, so the answer is already yes.\n.\n.\n.\n.\n.\n#dentalofficemanager #dentalpractice #practiceowner",
+  "status": "queued",
+  "media_id": null,
+  "posted_at": null,
+  "post_time": "18:02"
  },
  {
   "date": "2026-12-05",

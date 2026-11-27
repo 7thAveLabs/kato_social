@@ -20,6 +20,8 @@ Only the finished videos live in this repo. Never commit a downloaded track or s
 | 2026-12-02_who_posts | Walking Away | Peace Reels |
 | 2026-12-03_bulk_payment | For Some Time (Instrumental Version) | Daniel Gunnarsson |
 | 2026-12-03_says_paid | Snoozy Sue | Mid Knight |
+| 2026-12-04_deposits_match | Meadows of North | William Claeson |
+| 2026-12-04_eobs_posted | Toner | Ever So Blue |
 
 Message sounds on the thread Reels: Epidemic Sound "User Interface, Alert, Notification, Message, Text 05" (sent, sound effect id d574019e-3f55-4784-b092-36ebb3fb4221) and "Text 02" (received, id 7bb0265e-6b48-4e13-a3be-83170b4255d1).
 
